@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
-var motion = Vector2(0,0)
-var speed = 300
-var anim = "idle"
+var motion := Vector2(0,0)
+var speed := 300
+var anim := "idle"
 
-func _process(delta):
+func _physics_process(delta):
 	#movement
 	motion = Vector2(0,0)
 	
