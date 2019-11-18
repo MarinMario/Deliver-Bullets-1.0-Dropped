@@ -32,7 +32,6 @@ position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="body_container" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="body_sprite" type="AnimatedSprite" parent="body_container"]
 position = Vector2( 4, 2 )
@@ -41,3 +40,6 @@ animation = "walk"
 
 [node name="player_hand" parent="body_container" instance=ExtResource( 7 )]
 position = Vector2( -12, -9 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
