@@ -71,8 +71,8 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="weapon_item" parent="." instance=ExtResource( 3 )]
 position = Vector2( 315.136, 336.721 )
-state = "machine_gun"
+weapon_state = "machine_gun"
 
 [node name="weapon_item2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 453.278, 423.059 )
-state = "pistol"
+weapon_state = "pistol"

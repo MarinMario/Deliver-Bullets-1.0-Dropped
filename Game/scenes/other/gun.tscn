@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/other/weapon_states.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://scenes/other/gun.gd" type="Script" id=2]
 
 [node name="gun" type="AnimatedSprite"]
 position = Vector2( 43, 0 )
 frames = ExtResource( 1 )
 animation = "machine_gun"
+script = ExtResource( 2 )

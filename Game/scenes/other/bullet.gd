@@ -5,6 +5,7 @@ var target: Vector2
 var direction: Vector2
 var motion: Vector2
 var speed := 1000
+var weapon_state: String
 
 func _ready():
 	#init_pos = global.player_shoot_point
@@ -13,5 +14,10 @@ func _ready():
 	look_at(target)
 
 func _process(delta):
+	if weapon_state == "pistol":
+		speed = 500
+	elif weapon_state == "machine_gun":
+		speed = 1000
+	
 	motion = direction * speed * delta
-	position += self.motion
+	position += motion
