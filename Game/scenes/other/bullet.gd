@@ -10,6 +10,7 @@ func _ready():
 	#init_pos = global.player_shoot_point
 	position = init_pos
 	direction = (target - self.position).normalized()
+	look_at(target)
 
 func _process(delta):
 	motion = direction * speed * delta
