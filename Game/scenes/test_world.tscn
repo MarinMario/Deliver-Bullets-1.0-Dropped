@@ -76,3 +76,11 @@ weapon_state = "machine_gun"
 [node name="weapon_item2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 453.278, 423.059 )
 weapon_state = "pistol"
+
+[node name="weapon_item3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 830.441, 386.706 )
+weapon_state = "machine_gun"
+
+[node name="weapon_item4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 916.78, 261.742 )
+weapon_state = "pistol"

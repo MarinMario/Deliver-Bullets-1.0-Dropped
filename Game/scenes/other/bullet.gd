@@ -21,3 +21,6 @@ func _process(delta):
 	
 	motion = direction * speed * delta
 	position += motion
+
+func _on_bullet_body_shape_entered(body_id, body, body_shape, area_shape):
+	self.queue_free()

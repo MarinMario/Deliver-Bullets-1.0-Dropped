@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/player/player_stats.gd" type="Script" id=1]
+
+[node name="player_stats" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="ammo" type="Label" parent="."]
+margin_left = 114.0
+margin_top = 44.0
+margin_right = 200.0
+margin_bottom = 58.0
+text = "ammo: 30/30"
