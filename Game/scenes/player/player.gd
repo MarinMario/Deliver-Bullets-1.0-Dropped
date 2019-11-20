@@ -31,3 +31,4 @@ func _physics_process(delta):
 			$body_container.scale.x = -1
 	elif motion.x > 0:
 			$body_container.scale.x = 1
+			print("test for gh desktop")
