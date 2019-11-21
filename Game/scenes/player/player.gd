@@ -16,6 +16,9 @@ func _physics_process(delta):
 		motion.y += 1
 	if Input.is_action_pressed("ui_up"):
 		motion.y -= 1
+		
+	if Input.is_action_just_pressed("ui_select"):
+		global.player_health -= rand_range(1,10)
 	
 	motion = move_and_slide(motion.normalized() * speed)
 	
@@ -31,4 +34,3 @@ func _physics_process(delta):
 			$body_container.scale.x = -1
 	elif motion.x > 0:
 			$body_container.scale.x = 1
-			print("gh desktop est")

@@ -1,9 +1,11 @@
 extends Node2D
 
 var mouse: Vector2
-var weapon_state := "nothing"
-var fire_timer = 0
-var allow_fire = false
+var weapon_state := "hand"
+var fire_timer := 0.0
+var allow_fire := false
+var allow_reload := false
+var is_reloading := false
 
 var ammo: int
 var in_use_ammo: int
@@ -28,9 +30,13 @@ func _process(delta):
 		shoot()
 	if Input.is_action_just_pressed("change_weapon"):
 		change_weapon()
-	if Input.is_action_just_pressed("reload"):
+	if Input.is_action_just_pressed("reload") and allow_reload:
+		is_reloading = true
+		print(is_reloading)
 		yield(get_tree().create_timer(1.0), "timeout")
 		reload()
+		is_reloading = false
+		print(is_reloading)
 
 func shoot():
 	var bullet = BULLET.instance()
@@ -53,15 +59,13 @@ func reload():
 		if weapon_state == "pistol":
 			in_use_pistol_ammo += reload_ammo
 			global.player_pistol_ammo -= reload_ammo
-			print("pistol ammo: " + str(global.player_pistol_ammo))
+			#print("pistol ammo: " + str(global.player_pistol_ammo))
 		elif weapon_state == "machine_gun":
 			in_use_mg_ammo += reload_ammo
 			global.player_mg_ammo -= reload_ammo
-			print("mg ammo: " + str(global.player_mg_ammo))
+			#print("mg ammo: " + str(global.player_mg_ammo))
 		else:
 			in_use_ammo = 0
-			
-	pass
 
 func change_weapon():
 	num += 1
@@ -82,11 +86,15 @@ func ammo_manager():
 		ammo = 0
 		in_use_ammo = 0
 	
-	if in_use_ammo == 0:
+	if in_use_ammo == 0 or is_reloading:
 		allow_fire = false
 	else:
 		allow_fire = true
-		
+	
+	if is_reloading or ammo == 0:
+		allow_reload = false
+	else:
+		allow_reload = true
 
 
 
