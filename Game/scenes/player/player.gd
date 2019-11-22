@@ -5,6 +5,8 @@ var speed := 300
 var anim := "idle"
 
 func _physics_process(delta):
+	global.player_pos= self.global_position
+	
 	#movement
 	motion = Vector2(0,0)
 	

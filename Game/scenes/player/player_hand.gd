@@ -33,7 +33,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("reload") and allow_reload:
 		is_reloading = true
 		print(is_reloading)
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 		reload()
 		is_reloading = false
 		print(is_reloading)

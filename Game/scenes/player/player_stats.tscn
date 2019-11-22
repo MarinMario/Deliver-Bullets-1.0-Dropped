@@ -7,10 +7,10 @@
 [ext_resource path="res://assets/textures/icons/health_border.png" type="Texture" id=5]
 [ext_resource path="res://scenes/other/weapon_states.tres" type="SpriteFrames" id=6]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.482353, 0.152941, 0.188235, 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.843137, 0.960784, 1, 1 )
 
 [sub_resource type="Animation" id=3]
@@ -103,8 +103,8 @@ margin_left = 8.0
 margin_top = 15.0
 margin_right = 124.0
 margin_bottom = 43.0
-custom_styles/fg = SubResource( 7 )
-custom_styles/bg = SubResource( 6 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 percent_visible = false
 
 [node name="anims" type="AnimationPlayer" parent="."]
@@ -114,4 +114,4 @@ anims/r_key_end = SubResource( 4 )
 [node name="weapon" type="AnimatedSprite" parent="."]
 position = Vector2( 148, 164 )
 frames = ExtResource( 6 )
-animation = "nothing 1"
+animation = "machine_gun"

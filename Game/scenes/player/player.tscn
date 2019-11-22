@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/player/player_stats.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9, 47.4718 )
+extents = Vector2( 12, 57 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -40,12 +40,11 @@ frames = SubResource( 2 )
 animation = "walk"
 
 [node name="player_hand" parent="body_container" instance=ExtResource( 7 )]
-position = Vector2( -12, -9 )
+position = Vector2( -12, -10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
-editor_draw_screen = false
 
 [node name="player_stats" parent="." instance=ExtResource( 8 )]
