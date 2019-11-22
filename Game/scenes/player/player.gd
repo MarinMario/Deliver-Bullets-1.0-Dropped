@@ -22,7 +22,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		global.player_health -= rand_range(1,10)
 	
-	motion = move_and_slide(motion.normalized() * speed)
+	move_and_slide(motion.normalized() * speed)
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		if collision.collider.name == "bullet":
+			global.player_health -= 10
 	
 	#animations
 	$body_container/body_sprite.play(anim)
