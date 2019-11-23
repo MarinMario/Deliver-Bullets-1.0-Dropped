@@ -23,10 +23,6 @@ func _physics_process(delta):
 		global.player_health -= rand_range(1,10)
 	
 	move_and_slide(motion.normalized() * speed)
-	for i in range(get_slide_count()):
-		var collision = get_slide_collision(i)
-		if collision.collider.name == "bullet":
-			global.player_health -= 10
 	
 	#animations
 	$body_container/body_sprite.play(anim)

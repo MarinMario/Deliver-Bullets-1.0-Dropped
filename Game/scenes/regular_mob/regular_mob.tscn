@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/regular_mob/regular_mob.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/enemies/regular_mob/idle_regular_mob.png" type="Texture" id=2]
@@ -6,9 +6,7 @@
 [ext_resource path="res://assets/textures/enemies/regular_mob/move2_regular_mob.png" type="Texture" id=4]
 [ext_resource path="res://assets/textures/enemies/regular_mob/move3_regular_mob.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/enemies/regular_mob/move4_regular_mob.png" type="Texture" id=6]
-[ext_resource path="res://scenes/regular_mob/mob_hand.gd" type="Script" id=7]
-[ext_resource path="res://assets/textures/enemies/regular_mob/hand_regular_mob.png" type="Texture" id=8]
-[ext_resource path="res://scenes/other/gun.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/regular_mob/mob_hand.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 60 )
@@ -27,7 +25,23 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 198.063
+radius = 223.987
+
+[sub_resource type="Animation" id=4]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("body_container/mob_hand:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -100.0, 0.0 ]
+}
 
 [node name="regular_mob" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -42,22 +56,17 @@ position = Vector2( 4, -1 )
 frames = SubResource( 2 )
 animation = "walk"
 
-[node name="mob_hand" type="Node2D" parent="body_container"]
-script = ExtResource( 7 )
-
-[node name="hand" type="Sprite" parent="body_container/mob_hand"]
-position = Vector2( -11, -12 )
-texture = ExtResource( 8 )
-offset = Vector2( 13, 1 )
-
-[node name="gun" parent="body_container/mob_hand" instance=ExtResource( 9 )]
-position = Vector2( 33, -13 )
-animation = "nothing"
+[node name="mob_hand" parent="body_container" instance=ExtResource( 7 )]
+position = Vector2( -10, -13 )
 
 [node name="line_of_sight" type="Area2D" parent="."]
+position = Vector2( 11, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="line_of_sight"]
-position = Vector2( 166, 4 )
+position = Vector2( -11, 1 )
 shape = SubResource( 3 )
+
+[node name="anims" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 4 )
 [connection signal="body_entered" from="line_of_sight" to="." method="_on_line_of_sight_body_entered"]
 [connection signal="body_exited" from="line_of_sight" to="." method="_on_line_of_sight_body_exited"]

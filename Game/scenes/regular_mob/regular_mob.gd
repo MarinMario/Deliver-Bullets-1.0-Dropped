@@ -5,7 +5,7 @@ export var weapon_state: String
 var follow_player := false
 
 var motion: Vector2
-var speed := 100
+var speed := 300
 var target: Vector2
 var change_pos_timer := 2.0
 var do_command_timer := 0.0
@@ -17,19 +17,21 @@ func _physics_process(delta):
 	if change_pos_timer > 1 and follow_player:
 		target = global.player_pos
 		change_pos_timer = 0
-
 	if follow_player:
 		motion = (target - position).normalized()
-		$body_container/mob_hand/hand.look_at(target)
+		if position.distance_to(target) > 40:
+			speed = 300
+		else:
+			speed = 0.0001
+		$body_container/mob_hand.look_at(target)
 	else:
+		speed = 200
 		do_command_timer += delta
-		if do_command_timer > 1:
+		if do_command_timer > 2:
 			do_command()
 			do_command_timer = 0
 	
 	move_and_slide(motion * speed)
-	for i in range(get_slide_count()):
-		var collision = get_slide_collision(i)
 	
 	#animation
 	
@@ -40,10 +42,10 @@ func _physics_process(delta):
 	else:
 		$body_container.scale.x = 1
 	
-	if motion != Vector2(0,0):
-		anim = "walk"
-	else:
+	if motion == Vector2(0,0):
 		anim = "idle"
+	else:
+		anim = "walk"
 	
 	
 func do_command():
@@ -67,3 +69,6 @@ func _on_line_of_sight_body_entered(body):
 func _on_line_of_sight_body_exited(body):
 	if body.name == "player":
 		follow_player = false
+
+func attack():
+	$anims.play("attack")
