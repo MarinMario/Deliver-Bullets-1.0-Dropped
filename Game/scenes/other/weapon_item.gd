@@ -33,8 +33,6 @@ func add_ammo():
 		global.player_pistol_ammo += 30
 	elif weapon_state == "machine_gun":
 		global.player_mg_ammo += 30
-	
-	print(global.player_mg_ammo)
 
 func add_weapon():
 	global.player_weapons.push_back(weapon_state)

@@ -159,6 +159,18 @@ position = Vector2( 2149.99, 295.805 )
 position = Vector2( 394.657, 368.093 )
 weapon_state = "machine_gun"
 
+[node name="weapon_item5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 352.726, 447.296 )
+weapon_state = "machine_gun"
+
 [node name="weapon_item2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 545.498, 469.352 )
+position = Vector2( 545.498, 506.624 )
+weapon_state = "pistol"
+
+[node name="weapon_item3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 647.996, 529.919 )
+weapon_state = "pistol"
+
+[node name="weapon_item4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 540.839, 590.486 )
 weapon_state = "pistol"

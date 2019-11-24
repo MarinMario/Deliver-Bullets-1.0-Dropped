@@ -24,9 +24,13 @@ tracks/0/keys = {
 }
 
 [node name="weapon_item" type="Area2D"]
+position = Vector2( -63, 31 )
 z_index = -100
 z_as_relative = false
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -40,6 +44,8 @@ anims/key = SubResource( 2 )
 [node name="key" type="Sprite" parent="."]
 position = Vector2( 49, -40 )
 rotation = 6.28319
+z_index = 20
+z_as_relative = false
 texture = ExtResource( 3 )
 [connection signal="body_entered" from="." to="." method="_on_weapon_item_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_weapon_item_body_exited"]

@@ -90,6 +90,11 @@ func die():
 	$CollisionShape2D.disabled = true
 	$line_of_sight/CollisionShape2D.disabled = true
 	follow_player = false
+	var weapon_item = global.WEAPON_ITEM.instance()
+	weapon_item.weapon_state = weapon_state
+	weapon_state = "nothing"
+	add_child(weapon_item)
+	
 	$anims.play("die")
 
 

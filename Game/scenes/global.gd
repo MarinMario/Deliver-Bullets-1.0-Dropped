@@ -9,3 +9,4 @@ var player_health := 100
 
 const BLOOD_PARTICLES = preload("res://blood_particles.tscn")
 const BULLET = preload("res://scenes/other/bullet.tscn")
+const WEAPON_ITEM = preload("res://scenes/other/weapon_item.tscn")
