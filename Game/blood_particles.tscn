@@ -3,8 +3,8 @@
 [ext_resource path="res://blood_particles.gd" type="Script" id=1]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.125, 0.730769, 1 )
-colors = PoolColorArray( 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0 )
+offsets = PoolRealArray( 0.5, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -22,7 +22,6 @@ emission_sphere_radius = 10.0
 flag_disable_z = true
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
-angular_velocity = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 radial_accel = 20.0
@@ -39,7 +38,6 @@ amount = 10
 lifetime = 20.0
 speed_scale = 20.0
 explosiveness = 1.0
-randomness = 1.0
 local_coords = false
 process_material = SubResource( 5 )
 script = ExtResource( 1 )

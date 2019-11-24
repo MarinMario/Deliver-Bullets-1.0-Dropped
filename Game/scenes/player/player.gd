@@ -3,11 +3,10 @@ extends KinematicBody2D
 var motion := Vector2(0,0)
 var speed := 300
 var anim := "idle"
-
-const BLOOD_PARTICLES = preload("res://blood_particles.tscn")
+var weapon_state: String
 
 func _physics_process(delta):
-	global.player_pos= self.global_position
+	global.player_pos = self.global_position
 	
 	#movement
 	motion = Vector2(0,0)
@@ -21,9 +20,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_up"):
 		motion.y -= 1
 		
-	if Input.is_action_just_pressed("ui_select"):
-		global.player_health -= rand_range(1,10)
-		spawn_blood()
+	if Input.is_action_pressed("ui_select"):
+		take_damage()
 	
 	move_and_slide(motion.normalized() * speed)
 	
@@ -40,8 +38,9 @@ func _physics_process(delta):
 	elif motion.x > 0:
 			$body_container.scale.x = 1
 
-func spawn_blood():
-	var blood_particles = BLOOD_PARTICLES.instance()
+func take_damage():
+	global.player_health -= 5
+	var blood_particles = global.BLOOD_PARTICLES.instance()
 	add_child(blood_particles)
 
 

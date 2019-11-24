@@ -16,4 +16,4 @@ position = Vector2( 34, 0 )
 animation = "nothing"
 
 [node name="shoot_point" type="Position2D" parent="."]
-position = Vector2( 34, 0 )
+position = Vector2( 55, 0 )

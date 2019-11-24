@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/player/player_stats.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 57 )
+extents = Vector2( 15, 45 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -25,11 +25,13 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" groups=[
+"living",
+]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1 )
+position = Vector2( 0, -5 )
 shape = SubResource( 1 )
 
 [node name="body_container" type="Node2D" parent="."]

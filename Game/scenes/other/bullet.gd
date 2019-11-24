@@ -1,11 +1,13 @@
-extends Area2D
+extends KinematicBody2D
 
 var init_pos: Vector2
 var target: Vector2
 var direction: Vector2
 var motion: Vector2
-var speed := 1000
+var speed := 500
 var weapon_state: String
+var despawn_timer := 0.0
+var damage := 1
 
 func _ready():
 	#init_pos = global.player_shoot_point
@@ -14,13 +16,20 @@ func _ready():
 	look_at(target)
 
 func _process(delta):
-	if weapon_state == "pistol":
-		speed = 500
-	elif weapon_state == "machine_gun":
-		speed = 1000
-	
-	motion = direction * speed * delta
-	position += motion
+	motion = direction * speed
+	move_and_slide(motion)
+	if get_slide_count() > 0:
+		for i in get_slide_count():
+			var collision = get_slide_collision(i).collider
+			if collision.is_in_group("living"):
+				for i in damage:
+					collision.take_damage()
+			
+			self.queue_free()
 
-func _on_bullet_body_shape_entered(body_id, body, body_shape, area_shape):
-	self.queue_free()
+
+
+
+
+
+

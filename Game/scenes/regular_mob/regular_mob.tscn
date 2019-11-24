@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/regular_mob/regular_mob.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/enemies/regular_mob/idle_regular_mob.png" type="Texture" id=2]
@@ -9,13 +9,18 @@
 [ext_resource path="res://scenes/regular_mob/mob_hand.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 60 )
+extents = Vector2( 15, 30 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "idle",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "die",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ) ],
@@ -25,7 +30,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 223.987
+radius = 421.005
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
@@ -43,18 +48,50 @@ tracks/0/keys = {
 "values": [ 0.0, -100.0, 0.0 ]
 }
 
-[node name="regular_mob" type="KinematicBody2D"]
+[sub_resource type="Animation" id=5]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("body_container:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body_container/mob_hand:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+
+[node name="regular_mob" type="KinematicBody2D" groups=[
+"living",
+]]
 script = ExtResource( 1 )
+weapon_state = "pistol"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -10 )
 shape = SubResource( 1 )
 
 [node name="body_container" type="Node2D" parent="."]
 
 [node name="body_sprite" type="AnimatedSprite" parent="body_container"]
-position = Vector2( 4, -1 )
+position = Vector2( 4, -6 )
 frames = SubResource( 2 )
-animation = "walk"
+animation = "die"
 
 [node name="mob_hand" parent="body_container" instance=ExtResource( 7 )]
 position = Vector2( -10, -13 )
@@ -63,10 +100,11 @@ position = Vector2( -10, -13 )
 position = Vector2( 11, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="line_of_sight"]
-position = Vector2( -11, 1 )
+position = Vector2( 157, -4 )
 shape = SubResource( 3 )
 
 [node name="anims" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 4 )
+anims/die = SubResource( 5 )
 [connection signal="body_entered" from="line_of_sight" to="." method="_on_line_of_sight_body_entered"]
 [connection signal="body_exited" from="line_of_sight" to="." method="_on_line_of_sight_body_exited"]
