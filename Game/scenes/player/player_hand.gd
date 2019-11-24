@@ -42,7 +42,7 @@ func shoot():
 	var bullet = BULLET.instance()
 	bullet.init_pos = $shoot_point.global_position
 	bullet.target = mouse
-	bullet.weapon_state = weapon_state
+	bullet.bullet_type = weapon_state
 	get_parent().get_parent().get_parent().add_child(bullet)
 	
 	if weapon_state == "pistol":

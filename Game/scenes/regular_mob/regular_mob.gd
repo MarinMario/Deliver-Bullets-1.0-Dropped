@@ -22,7 +22,7 @@ func _physics_process(delta):
 	if follow_player and health > 0:
 		motion = (target - position).normalized()
 		$body_container/mob_hand.look_at(target)
-		if position.distance_to(target) > 100:
+		if position.distance_to(target) > 200:
 			speed = 300
 		else:
 			speed = 0.0001
