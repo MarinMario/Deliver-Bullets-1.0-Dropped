@@ -96,6 +96,3 @@ func die():
 	add_child(weapon_item)
 	
 	$anims.play("die")
-
-
-
