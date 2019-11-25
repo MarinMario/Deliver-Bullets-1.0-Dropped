@@ -7,6 +7,6 @@ var player_pistol_ammo := 0
 var player_mg_ammo := 0
 var player_health := 100
 
-const BLOOD_PARTICLES = preload("res://blood_particles.tscn")
+const BLOOD_SPLATTER = preload("res://scenes/other/blood_splatter.tscn")
 const BULLET = preload("res://scenes/other/bullet.tscn")
 const WEAPON_ITEM = preload("res://scenes/other/weapon_item.tscn")

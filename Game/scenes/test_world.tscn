@@ -1,23 +1,41 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/world/roof.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/world/floor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://scenes/test_world.gd" type="Script" id=1]
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/world/roof.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/world/floor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/regular_mob/regular_mob.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/other/weapon_item.tscn" type="PackedScene" id=6]
 
 [node name="test_world" type="Node2D"]
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -125.839 ]
 }
 
-[node name="player" parent="." instance=ExtResource( 1 )]
+[node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 575.11, 342.722 )
 z_index = 1
 
-[node name="roof" parent="." instance=ExtResource( 2 )]
+[node name="roof" parent="." instance=ExtResource( 3 )]
 
-[node name="floor" parent="." instance=ExtResource( 3 )]
+[node name="floor" parent="." instance=ExtResource( 4 )]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 300.082, 352.382 )
-texture = ExtResource( 4 )
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="regular_mob" parent="enemies" instance=ExtResource( 5 )]
+position = Vector2( 2057.11, 315.58 )
+
+[node name="weapons" type="Node2D" parent="."]
+
+[node name="weapon_item" parent="weapons" instance=ExtResource( 6 )]
+position = Vector2( 270.112, 329.048 )
+weapon_state = "machine_gun"
+
+[node name="weapon_item2" parent="weapons" instance=ExtResource( 6 )]
+position = Vector2( 351.929, 471.254 )
+weapon_state = "machine_gun"
+
+[node name="weapon_item3" parent="weapons" instance=ExtResource( 6 )]
+position = Vector2( 509.719, 523.85 )
+weapon_state = "machine_gun"
