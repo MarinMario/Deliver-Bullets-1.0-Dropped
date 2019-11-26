@@ -81,9 +81,10 @@ func attack():
 
 func take_damage():
 	health -= 5
+	var blood_scale := 0.2 if health > 0 else 0.5
 	for i in 10:
 		var blood_splatter = global.BLOOD_SPLATTER.instance()
-		blood_splatter.spawn_blood(global_position, 100, 1, 0.2)
+		blood_splatter.spawn_blood(global_position, 1000, 100, blood_scale)
 		get_parent().add_child(blood_splatter)
 	if health <= 0:
 		die()

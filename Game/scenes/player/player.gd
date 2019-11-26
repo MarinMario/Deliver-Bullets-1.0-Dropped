@@ -4,6 +4,7 @@ var motion := Vector2(0,0)
 var speed := 300
 var anim := "idle"
 var weapon_state: String
+#var p_a: int = 0
 
 func _physics_process(delta):
 	global.player_pos = self.global_position
@@ -42,8 +43,11 @@ func take_damage():
 	global.player_health -= 5
 	for i in 10:
 		var blood_splatter = global.BLOOD_SPLATTER.instance()
-		blood_splatter.spawn_blood(global_position, 100, 1, 0.5)
+		blood_splatter.spawn_blood(global_position, 1000, 100, 0.2)
 		get_parent().add_child(blood_splatter)
+		#p_a += 10
+	
+	#print("particle amount: " + str(p_a))
 
 
 

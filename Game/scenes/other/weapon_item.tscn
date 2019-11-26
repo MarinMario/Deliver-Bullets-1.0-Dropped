@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/other/weapon_item.gd" type="Script" id=1]
 [ext_resource path="res://scenes/other/gun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/icons/e_key.png" type="Texture" id=3]
+[ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 67.0671
@@ -25,18 +26,15 @@ tracks/0/keys = {
 
 [node name="weapon_item" type="Area2D"]
 position = Vector2( -63, 31 )
-z_index = -100
 z_as_relative = false
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="gun" parent="." instance=ExtResource( 2 )]
 position = Vector2( -1, 0 )
+z_index = 1
 
 [node name="anims" type="AnimationPlayer" parent="."]
 anims/key = SubResource( 2 )
@@ -47,5 +45,8 @@ rotation = 6.28319
 z_index = 20
 z_as_relative = false
 texture = ExtResource( 3 )
+
+[node name="shadow" parent="." instance=ExtResource( 4 )]
+position = Vector2( -1, 6 )
 [connection signal="body_entered" from="." to="." method="_on_weapon_item_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_weapon_item_body_exited"]

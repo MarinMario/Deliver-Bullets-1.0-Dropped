@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/player_idle_1.png" type="Texture" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://assets/textures/player/player_walk_3.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/player/player_walk_4.png" type="Texture" id=6]
 [ext_resource path="res://scenes/player/player_hand.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/player/player_stats.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/player/player_stats.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 45 )
@@ -44,9 +45,11 @@ animation = "walk"
 [node name="player_hand" parent="body_container" instance=ExtResource( 7 )]
 position = Vector2( -12, -10 )
 
+[node name="shadow" parent="body_container" instance=ExtResource( 8 )]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
-[node name="player_stats" parent="." instance=ExtResource( 8 )]
+[node name="player_stats" parent="." instance=ExtResource( 9 )]

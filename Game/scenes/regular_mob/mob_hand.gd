@@ -9,9 +9,9 @@ func _process(delta):
 	weapon_state = get_parent().get_parent().weapon_state
 	
 	if weapon_state == "pistol":
-		fire_rate = 1
+		fire_rate = 1.0
 	elif weapon_state == "machine_gun":
-		fire_rate = 0.2
+		fire_rate = 0.25
 	else:
 		fire_rate = 0
 	
