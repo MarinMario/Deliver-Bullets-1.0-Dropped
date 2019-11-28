@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var weapon_state: String
 
 var follow_player := false
+var alive := true
 
 var motion: Vector2
 var speed := 300
@@ -44,10 +45,10 @@ func _physics_process(delta):
 	else:
 		$body_container.scale.x = 1
 	
-	if motion == Vector2(0,0) and health > 0:
-		anim = "idle"
-	elif health <= 0:
+	if health <= 0:
 		anim = "die"
+	elif speed < 1:
+		anim = "idle"
 	else:
 		anim = "walk"
 
@@ -86,16 +87,25 @@ func take_damage():
 		var blood_splatter = global.BLOOD_SPLATTER.instance()
 		blood_splatter.spawn_blood(global_position, 1000, 100, blood_scale)
 		get_parent().add_child(blood_splatter)
-	if health <= 0:
+	if health <= 0 and alive:
 		die()
 
 func die():
+	alive = false
+	
 	$CollisionShape2D.disabled = true
 	$line_of_sight/CollisionShape2D.disabled = true
 	follow_player = false
+	
+	#drop weapon
 	var weapon_item = global.WEAPON_ITEM.instance()
+	var gun = $"body_container/mob_hand/gun"
+	var random_pos = rand_range(30,70)
 	weapon_item.weapon_state = weapon_state
-	weapon_state = "nothing"
-	add_child(weapon_item)
+	weapon_item.global_position = gun.global_position + Vector2(random_pos, random_pos)
+	get_parent().add_child(weapon_item)
+	
 	
 	$anims.play("die")
+	self.z_index = -2
+	weapon_state = "nothing"

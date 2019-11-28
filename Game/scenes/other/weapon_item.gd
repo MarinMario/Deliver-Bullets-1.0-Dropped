@@ -5,6 +5,7 @@ var pick_allow := false
 var play_key = false
 
 func _ready():
+	$key.visible = false
 	#weapon_state = "pistol"
 	pass
 
