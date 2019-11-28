@@ -47,8 +47,8 @@ func take_damage():
 		get_parent().add_child(blood_splatter)
 		#p_a += 10
 	
+	$Camera2D.camera_shake()
 	#print("particle amount: " + str(p_a))
-
 
 
 

@@ -1,6 +1,7 @@
 extends Node2D
 
 var player_pos: Vector2
+var camera: Node2D
 
 var player_weapons := ["nothing"]
 var player_pistol_ammo := 0

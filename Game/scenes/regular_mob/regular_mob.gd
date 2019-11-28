@@ -82,6 +82,7 @@ func attack():
 
 func take_damage():
 	health -= 5
+	
 	var blood_scale := 0.2 if health > 0 else 0.5
 	for i in 10:
 		var blood_splatter = global.BLOOD_SPLATTER.instance()
@@ -89,6 +90,8 @@ func take_damage():
 		get_parent().add_child(blood_splatter)
 	if health <= 0 and alive:
 		die()
+	
+	global.camera.camera_shake()
 
 func die():
 	alive = false

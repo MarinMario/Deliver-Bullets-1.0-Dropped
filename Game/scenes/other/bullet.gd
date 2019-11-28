@@ -18,6 +18,7 @@ func _ready():
 func _process(delta):
 	motion = direction * speed
 	move_and_slide(motion)
+	$bullet_sprite.play(bullet_type)
 	
 	if bullet_type == "machine_gun":
 		damage = 1
