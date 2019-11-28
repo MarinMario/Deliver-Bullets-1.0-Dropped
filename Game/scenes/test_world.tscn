@@ -25,11 +25,16 @@ z_index = 4096
 [node name="floor" parent="." instance=ExtResource( 4 )]
 
 [node name="enemies" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 2
 
 [node name="regular_mob" parent="enemies" instance=ExtResource( 5 )]
-position = Vector2( 2057.11, 315.58 )
+position = Vector2( 2055.26, 13.9286 )
+
+[node name="regular_mob2" parent="enemies" instance=ExtResource( 5 )]
+position = Vector2( 2062.66, 654.244 )
+
+[node name="regular_mob3" parent="enemies" instance=ExtResource( 5 )]
+position = Vector2( 1799.87, 385.904 )
 
 [node name="weapons" type="Node2D" parent="."]
 editor/display_folded = true

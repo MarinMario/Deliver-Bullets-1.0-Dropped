@@ -21,10 +21,10 @@ func _process(delta):
 	
 	if bullet_type == "machine_gun":
 		damage = 1
-		speed = 800
+		speed = 1500
 	elif bullet_type == "pistol":
 		damage = 3
-		speed = 600
+		speed = 1000
 	
 	if get_slide_count() > 0:
 		for i in get_slide_count():
