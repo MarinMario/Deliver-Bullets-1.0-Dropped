@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/other/explosion.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/icons/explosion.png" type="Texture" id=2]
+
+[node name="explosion" type="Node2D"]
+z_index = 4096
+z_as_relative = false
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, 1 )
+texture = ExtResource( 2 )

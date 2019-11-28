@@ -14,6 +14,10 @@ func _ready():
 	position = init_pos
 	direction = (target - self.position).normalized()
 	look_at(target)
+	
+	var explosion = global.EXPLOSION.instance()
+	explosion.global_position = self.global_position
+	get_parent().add_child(explosion)
 
 func _process(delta):
 	motion = direction * speed

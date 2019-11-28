@@ -20,7 +20,7 @@ func _process(delta):
 		if fire_timer > fire_rate:
 			target = get_parent().get_parent().target
 			fire_timer = 0
-			yield(get_tree().create_timer(0.5), "timeout")
+			#yield(get_tree().create_timer(0.5), "timeout")
 			shoot()
 
 func shoot():
