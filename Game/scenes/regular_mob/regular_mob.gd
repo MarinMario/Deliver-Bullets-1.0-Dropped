@@ -6,7 +6,7 @@ var follow_player := false
 var alive := true
 
 var motion: Vector2
-var speed := 300
+var speed := 200
 var target: Vector2
 var change_pos_timer := 2.0
 var do_command_timer := 0.0
@@ -28,8 +28,9 @@ func _physics_process(delta):
 		else:
 			speed = 0.0001
 	else:
-		speed = 200
-		do_command_timer += delta
+		speed = 150
+		do_command_timer += delta if get_slide_count() < 1 else 3
+	
 		if do_command_timer > 2 and health > 0:
 			do_command()
 			do_command_timer = 0
@@ -55,18 +56,7 @@ func _physics_process(delta):
 
 func do_command():
 	randomize()
-	var random_command: int = rand_range(0,6)
-	if random_command == 0:
-		motion.y = 1
-	elif random_command == 1:
-		motion.x = 1
-	elif random_command == 2:
-		motion.y = -1
-	elif random_command == 3:
-		motion.x = -1
-	elif random_command in [4,5,6]:
-		motion = Vector2(0,0)
-
+	motion = Vector2(rand_range(-1,1), rand_range(-1,1))
 func _on_line_of_sight_body_entered(body):
 	if body.name == "player":
 		follow_player = true

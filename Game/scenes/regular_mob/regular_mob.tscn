@@ -1,56 +1,43 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/regular_mob/regular_mob.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/enemies/regular_mob/idle_regular_mob.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move1_regular_mob.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move2_regular_mob.png" type="Texture" id=4]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move3_regular_mob.png" type="Texture" id=5]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move4_regular_mob.png" type="Texture" id=6]
-[ext_resource path="res://scenes/regular_mob/mob_hand.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/enemies/regular_mob/idle_regular_mob.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move1_regular_mob.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move2_regular_mob.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move3_regular_mob.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move4_regular_mob.png" type="Texture" id=7]
+[ext_resource path="res://scenes/regular_mob/mob_hand.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 58 )
+extents = Vector2( 16, 59 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "idle",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "die",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk",
 "speed": 20.0
 } ]
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 617.066
+radius = 517.009
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("body_container/mob_hand:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -100.0, 0.0 ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "die"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("body_container:rotation_degrees")
 tracks/0/interp = 1
@@ -75,6 +62,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -90.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.2 ), Vector2( 1.1, 0.4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("shadow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 57 ), Vector2( 0, 10 ) ]
+}
 
 [node name="regular_mob" type="KinematicBody2D" groups=[
 "living",
@@ -86,8 +97,11 @@ script = ExtResource( 1 )
 weapon_state = "pistol"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -10 )
+position = Vector2( 0, -7 )
 shape = SubResource( 1 )
+
+[node name="shadow" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 57 )
 
 [node name="body_container" type="Node2D" parent="."]
 
@@ -96,14 +110,13 @@ position = Vector2( 4, -6 )
 frames = SubResource( 2 )
 animation = "die"
 
-[node name="mob_hand" parent="body_container" instance=ExtResource( 7 )]
+[node name="mob_hand" parent="body_container" instance=ExtResource( 8 )]
 position = Vector2( -10, -13 )
 
 [node name="line_of_sight" type="Area2D" parent="."]
 position = Vector2( 11, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="line_of_sight"]
-position = Vector2( -10, -10 )
 shape = SubResource( 3 )
 
 [node name="anims" type="AnimationPlayer" parent="."]

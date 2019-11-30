@@ -1,6 +1,6 @@
 extends Node2D
 
-var mouse: Vector2
+var target := Vector2(0,0)
 var weapon_state := "hand"
 var fire_timer := 0.0
 var allow_fire := false
@@ -15,12 +15,10 @@ var in_use_mg_ammo:int
 
 var num := 0
 
-const BULLET = preload("res://scenes/other/bullet.tscn")
-
 func _process(delta):
-	mouse = get_global_mouse_position()
-	
-	self.look_at(mouse)
+	if global.player_health > 0:
+		target = get_global_mouse_position()
+		self.look_at(target)
 	#$gun.look_at(mouse)
 	
 	$gun.play(weapon_state)
@@ -32,16 +30,15 @@ func _process(delta):
 		change_weapon()
 	if Input.is_action_just_pressed("reload") and allow_reload:
 		is_reloading = true
-		print(is_reloading)
+		print("reloading...")
 		yield(get_tree().create_timer(2.0), "timeout")
 		reload()
 		is_reloading = false
-		print(is_reloading)
 
 func shoot():
-	var bullet = BULLET.instance()
+	var bullet = global.BULLET.instance()
 	bullet.init_pos = $shoot_point.global_position
-	bullet.target = mouse
+	bullet.target = target
 	bullet.bullet_type = weapon_state
 	get_parent().get_parent().get_parent().add_child(bullet)
 	
@@ -59,11 +56,9 @@ func reload():
 		if weapon_state == "pistol":
 			in_use_pistol_ammo += reload_ammo
 			global.player_pistol_ammo -= reload_ammo
-			#print("pistol ammo: " + str(global.player_pistol_ammo))
 		elif weapon_state == "machine_gun":
 			in_use_mg_ammo += reload_ammo
 			global.player_mg_ammo -= reload_ammo
-			#print("mg ammo: " + str(global.player_mg_ammo))
 		else:
 			in_use_ammo = 0
 
@@ -86,15 +81,19 @@ func ammo_manager():
 		ammo = 0
 		in_use_ammo = 0
 	
-	if in_use_ammo == 0 or is_reloading:
-		allow_fire = false
-	else:
-		allow_fire = true
+	if global.player_health > 0:
+		if in_use_ammo == 0 or is_reloading:
+			allow_fire = false
+		else:
+			allow_fire = true
 	
-	if is_reloading or ammo == 0:
-		allow_reload = false
+		if is_reloading or ammo == 0:
+			allow_reload = false
+		else:
+			allow_reload = true
 	else:
-		allow_reload = true
+		allow_reload = false
+		allow_fire = false
 
 
 

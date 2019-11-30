@@ -8,6 +8,8 @@ var player_pistol_ammo := 0
 var player_mg_ammo := 0
 var player_health := 100
 
+var blood_sprites_on_screen := 0
+
 const BLOOD_SPLATTER = preload("res://scenes/other/blood_splatter.tscn")
 const BULLET = preload("res://scenes/other/bullet.tscn")
 const MOB_BULLET = preload("res://scenes/other/mob_bullet.tscn")

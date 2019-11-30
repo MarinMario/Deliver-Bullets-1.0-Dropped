@@ -1,7 +1,27 @@
 extends Camera2D
 
+var motion: Vector2
+var speed = 10
+
 func _process(delta):
 	global.camera = self
+	
+	motion = Vector2(0,0)
+	
+	if Input.is_action_pressed("move_camera"):
+		if Input.is_action_pressed("ui_right"):
+			motion.x += 1
+		if Input.is_action_pressed("ui_left"):
+			motion.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			motion.y += 1
+		if Input.is_action_pressed("ui_up"):
+			motion.y -= 1
+		
+		self.position += motion.normalized() * speed
+	else:
+		position = Vector2(0,0)
+	
 
 func camera_shake():
 	randomize()
