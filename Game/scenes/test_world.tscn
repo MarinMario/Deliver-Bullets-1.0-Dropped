@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/test_world.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/regular_mob/regular_mob.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/other/weapon_item.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/other/light_caster.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/other/barrel.tscn" type="PackedScene" id=8]
 
 [node name="test_world" type="Node2D"]
 script = ExtResource( 1 )
@@ -72,3 +73,11 @@ position = Vector2( 2023.78, -64.4211 )
 
 [node name="light_caster6" parent="light" instance=ExtResource( 7 )]
 position = Vector2( 2120.16, 829.621 )
+
+[node name="barrels" type="Node2D" parent="light"]
+
+[node name="barrel" parent="light/barrels" instance=ExtResource( 8 )]
+position = Vector2( -2.05054, 38.9605 )
+
+[node name="barrel2" parent="light/barrels" instance=ExtResource( 8 )]
+position = Vector2( 371.15, 41.0111 )

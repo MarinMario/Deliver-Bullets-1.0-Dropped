@@ -45,11 +45,7 @@ func _physics_process(delta):
 			$body_container.scale.x = 1
 
 func take_damage():
-	global.player_health -= 5
-	for i in 10:
-		var blood_splatter = global.BLOOD_SPLATTER.instance()
-		blood_splatter.spawn_blood(global_position, 1000, 100, 0.2)
-		get_parent().add_child(blood_splatter)
+	global.player_health -= 1
 		#p_a += 10
 	
 	$Camera2D.camera_shake()
@@ -62,6 +58,7 @@ func die():
 	speed = 0
 	$CollisionShape2D.disabled = true
 	$anims.play("die")
+	self.z_index = 0
 	
 	#get_tree().reload_current_scene()
 

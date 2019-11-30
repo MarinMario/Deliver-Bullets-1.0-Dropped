@@ -15,7 +15,7 @@ func _ready():
 	scale.y = scale.x
 	
 	blood_color = rand_range(300000, 900000)
-	self.modulate = str(blood_color)
+	#self.modulate = str(blood_color)
 	
 	#global.blood_sprites_on_screen += 1
 	#print("blood sprites: " + str(global.blood_sprites_on_screen))
