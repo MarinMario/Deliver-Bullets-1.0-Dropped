@@ -115,3 +115,10 @@ anims/r_key_end = SubResource( 4 )
 position = Vector2( 148, 164 )
 frames = ExtResource( 6 )
 animation = "machine_gun"
+
+[node name="slow_mo_time" type="ProgressBar" parent="."]
+margin_left = 382.0
+margin_top = 48.0
+margin_right = 892.0
+margin_bottom = 129.0
+max_value = 10.0

@@ -4,6 +4,7 @@ var motion := Vector2(0,0)
 var speed := 300
 var anim := "idle"
 var weapon_state: String
+var slow_mo_timer := 5.0
 #var p_a: int = 0
 
 func _ready():
@@ -25,6 +26,14 @@ func _physics_process(delta):
 			motion.y += 1
 		if Input.is_action_pressed("ui_up"):
 			motion.y -= 1
+	
+	
+	if Input.is_action_pressed("slow_time") and slow_mo_timer > 0:
+		Engine.set_time_scale(0.1)
+		slow_mo_timer -= 10 * delta if slow_mo_timer > 0 else 0
+	else:
+		slow_mo_timer += 0.5 * delta if slow_mo_timer < 10 else 0
+		Engine.set_time_scale(1.0)
 		
 	if Input.is_action_pressed("ui_select"):
 		get_tree().reload_current_scene()

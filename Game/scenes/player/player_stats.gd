@@ -3,6 +3,7 @@ extends CanvasLayer
 var player: Node
 var in_use_ammo: String
 var ammo: String
+var slow_time_value: float
 
 func _process(delta):
 	player = get_parent().get_node("body_container/player_hand")
@@ -34,6 +35,10 @@ func _process(delta):
 	
 	#set in use gun
 	$weapon.play(player.weapon_state)
+	
+	#set slow mo time
+	slow_time_value = get_parent().slow_mo_timer
+	$slow_mo_time.value = slow_time_value
 	
 	
 	
