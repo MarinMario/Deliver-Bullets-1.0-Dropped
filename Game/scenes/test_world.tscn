@@ -37,7 +37,7 @@ position = Vector2( 2055.26, 13.9286 )
 position = Vector2( 2062.66, 654.244 )
 
 [node name="regular_mob3" parent="enemies" instance=ExtResource( 5 )]
-position = Vector2( 1799.87, 385.904 )
+position = Vector2( 1799.87, 388.995 )
 
 [node name="weapons" type="Node2D" parent="."]
 editor/display_folded = true

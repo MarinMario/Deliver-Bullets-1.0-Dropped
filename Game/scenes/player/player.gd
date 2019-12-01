@@ -47,8 +47,7 @@ func _physics_process(delta):
 func take_damage():
 	global.player_health -= 1
 		#p_a += 10
-	
-	$Camera2D.camera_shake()
+	$Camera2D.camera_shake(5, 1)
 	
 	if global.player_health <= 0:
 		die()

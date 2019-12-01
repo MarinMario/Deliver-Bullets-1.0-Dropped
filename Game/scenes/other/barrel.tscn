@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/textures/other/barrel.png" type="Texture" id=4]
 [ext_resource path="res://scenes/other/light_caster.tscn" type="PackedScene" id=5]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -19,7 +19,7 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26, 25 )
 
 [sub_resource type="Animation" id=3]
@@ -62,7 +62,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 235.053
+radius = 296.027
 
 [node name="barrel" type="KinematicBody2D" groups=[
 "interacting",
@@ -76,7 +76,7 @@ position = Vector2( 0, 48 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1e-005, 1e-005 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "barrel"
 
 [node name="light_caster" parent="Sprite" instance=ExtResource( 5 )]
@@ -85,7 +85,7 @@ scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, -16 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="anims" type="AnimationPlayer" parent="."]
 anims/explode = SubResource( 3 )

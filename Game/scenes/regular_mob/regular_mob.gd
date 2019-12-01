@@ -72,10 +72,12 @@ func attack():
 
 func take_damage():
 	health -= 1
+	follow_player = true if health > 0 else false
+	can_shoot = true if health > 0 else false
 	if health <= 0 and alive:
 		die()
 	
-	global.camera.camera_shake()
+	global.camera.camera_shake(5, 1)
 
 func die():
 	alive = false

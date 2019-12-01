@@ -2,10 +2,17 @@ extends KinematicBody2D
 
 var alive := true
 var bodies_inside_area := []
+var despawn_timer := 0.0
 
 func _ready():
 	$Sprite/light_caster.visible = false
 	$Sprite.scale = Vector2(1,1)
+
+func _process(delta):
+	if not alive:
+		despawn_timer += delta
+		if despawn_timer > 2:
+			self.queue_free()
 
 func take_damage():
 	if alive:
@@ -18,6 +25,9 @@ func take_damage():
 		$shadow.visible = false
 		
 		alive = false
+		
+		global.camera.camera_shake(15, 3)
+		
 		give_damage()
 
 func give_damage():
