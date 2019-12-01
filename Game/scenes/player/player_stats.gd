@@ -38,7 +38,7 @@ func _process(delta):
 	
 	#set slow mo time
 	slow_time_value = get_parent().slow_mo_timer
-	$slow_mo_time.value = slow_time_value
+	$slow_mo/slow_mo_bar.value = slow_time_value
 	
 	
 	

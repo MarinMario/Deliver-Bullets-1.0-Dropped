@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/player/player_stats.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/icons/ammo_bg.png" type="Texture" id=2]
@@ -12,6 +12,12 @@ bg_color = Color( 0.482353, 0.152941, 0.188235, 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.843137, 0.960784, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.215686, 0.376471, 0.701961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.921569, 0.980392, 1, 1 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "r_key"
@@ -84,7 +90,6 @@ position = Vector2( 177, 20 )
 texture = ExtResource( 4 )
 
 [node name="health" type="Control" parent="."]
-editor/display_folded = true
 margin_left = 51.0
 margin_top = 20.0
 margin_right = 187.0
@@ -107,18 +112,33 @@ custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
 
+[node name="slow_mo" type="Control" parent="."]
+margin_left = 200.0
+margin_top = 20.0
+margin_right = 337.0
+margin_bottom = 71.0
+
+[node name="border" type="Sprite" parent="slow_mo"]
+position = Vector2( 66, 29 )
+z_index = 1
+texture = ExtResource( 5 )
+
+[node name="slow_mo_bar" type="ProgressBar" parent="slow_mo"]
+margin_left = 8.0
+margin_top = 15.0
+margin_right = 124.0
+margin_bottom = 43.0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+max_value = 10.0
+value = 5.0
+percent_visible = false
+
 [node name="anims" type="AnimationPlayer" parent="."]
 anims/r_key = SubResource( 3 )
 anims/r_key_end = SubResource( 4 )
 
 [node name="weapon" type="AnimatedSprite" parent="."]
-position = Vector2( 148, 164 )
+position = Vector2( 150, 164 )
 frames = ExtResource( 6 )
 animation = "machine_gun"
-
-[node name="slow_mo_time" type="ProgressBar" parent="."]
-margin_left = 382.0
-margin_top = 48.0
-margin_right = 892.0
-margin_bottom = 129.0
-max_value = 10.0

@@ -32,7 +32,7 @@ func _physics_process(delta):
 		Engine.set_time_scale(0.1)
 		slow_mo_timer -= 10 * delta if slow_mo_timer > 0 else 0
 	else:
-		slow_mo_timer += 0.5 * delta if slow_mo_timer < 10 else 0
+		slow_mo_timer += delta if slow_mo_timer < 10 else 0
 		Engine.set_time_scale(1.0)
 		
 	if Input.is_action_pressed("ui_select"):

@@ -1,7 +1,10 @@
 extends CanvasLayer
 
+var option_on := false
+
 func _ready():
 	$menu.rect_position.y = 1000
+	$options_tab.rect_position.x = 2000
 	$anim.play("ready_menu")
 
 
@@ -14,4 +17,9 @@ func _on_exit_pressed():
 
 
 func _on_options_pressed():
-	pass
+	if option_on:
+		$anim.play_backwards("option_menu")
+		option_on = false
+	else:
+		$anim.play("option_menu")
+		option_on = true

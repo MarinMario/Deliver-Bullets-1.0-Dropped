@@ -4,9 +4,9 @@
 [ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/other/explosion.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/other/barrel.png" type="Texture" id=4]
-[ext_resource path="res://scenes/other/light_caster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/other/light.png" type="Texture" id=5]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -75,13 +75,16 @@ script = ExtResource( 1 )
 position = Vector2( 0, 48 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 1e-005, 1e-005 )
-frames = SubResource( 1 )
+modulate = Color( 1, 1, 1, 0 )
+rotation = 6.28319
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+frames = SubResource( 5 )
 animation = "barrel"
 
-[node name="light_caster" parent="Sprite" instance=ExtResource( 5 )]
-visible = false
-scale = Vector2( 2, 2 )
+[node name="light_caster" type="Sprite" parent="Sprite"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, -16 )

@@ -7,6 +7,7 @@ var despawn_timer := 0.0
 func _ready():
 	$Sprite/light_caster.visible = false
 	$Sprite.scale = Vector2(1,1)
+	$Sprite.modulate.a = 1
 
 func _process(delta):
 	if not alive:
