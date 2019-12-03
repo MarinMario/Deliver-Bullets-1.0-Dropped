@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/other/slider_slider.png" type="Texture" id=8]
 [ext_resource path="res://assets/other/slider_circle.png" type="Texture" id=9]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "option_menu"
 length = 0.5
 tracks/0/type = "value"
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2000, 250 ), Vector2( 600, 250 ) ]
+"values": [ Vector2( 1500, 250 ), Vector2( 600, 250 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("options_tab:visible")
@@ -38,8 +38,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "ready_menu"
+[sub_resource type="Animation" id=2]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CenterContainer:rect_position")
@@ -66,7 +65,7 @@ tracks/1/keys = {
 "values": [ Vector2( 100, 1000 ), Vector2( 100, 300 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 
 [node name="main_menu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -170,8 +169,8 @@ align = 1
 valign = 1
 
 [node name="anim" type="AnimationPlayer" parent="."]
-anims/option_menu = SubResource( 3 )
-anims/ready_menu = SubResource( 1 )
+anims/option_menu = SubResource( 1 )
+anims/ready_menu = SubResource( 2 )
 
 [node name="options_tab" type="Control" parent="."]
 editor/display_folded = true
@@ -222,7 +221,7 @@ margin_right = 335.689
 margin_bottom = 87.2363
 custom_icons/grabber_highlight = ExtResource( 9 )
 custom_icons/grabber = ExtResource( 9 )
-custom_styles/slider = SubResource( 2 )
+custom_styles/slider = SubResource( 3 )
 
 [node name="Sound" type="Control" parent="options_tab"]
 margin_left = 131.392
@@ -257,7 +256,7 @@ margin_right = 335.689
 margin_bottom = 87.2363
 custom_icons/grabber_highlight = ExtResource( 9 )
 custom_icons/grabber = ExtResource( 9 )
-custom_styles/slider = SubResource( 2 )
+custom_styles/slider = SubResource( 3 )
 [connection signal="pressed" from="menu/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="menu/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]

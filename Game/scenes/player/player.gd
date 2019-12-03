@@ -68,7 +68,7 @@ func die():
 	$anims.play("die")
 	self.z_index = 0
 	
-	#get_tree().reload_current_scene()
+	#get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
 
 
 
