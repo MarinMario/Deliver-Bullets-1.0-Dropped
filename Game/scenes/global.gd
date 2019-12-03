@@ -1,5 +1,6 @@
 extends Node2D
 
+var player
 var player_pos: Vector2
 var camera: Node2D
 

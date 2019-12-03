@@ -32,7 +32,7 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "dash1"
 length = 0.5
 tracks/0/type = "value"
@@ -96,7 +96,7 @@ tracks/4/keys = {
 "values": [ 0.0, 90.0, 90.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "dash2"
 length = 0.5
 tracks/0/type = "value"
@@ -160,8 +160,7 @@ tracks/4/keys = {
 "values": [ 0.0, 90.0, 90.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "die"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("body_container:rotation_degrees")
 tracks/0/interp = 1
@@ -243,6 +242,6 @@ script = ExtResource( 9 )
 [node name="player_stats" parent="." instance=ExtResource( 10 )]
 
 [node name="anims" type="AnimationPlayer" parent="."]
-anims/dash1 = SubResource( 4 )
-anims/dash2 = SubResource( 5 )
-anims/die = SubResource( 3 )
+anims/dash1 = SubResource( 3 )
+anims/dash2 = SubResource( 4 )
+anims/die = SubResource( 5 )

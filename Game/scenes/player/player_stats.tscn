@@ -13,14 +13,13 @@ bg_color = Color( 0.482353, 0.152941, 0.188235, 1 )
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.843137, 0.960784, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.215686, 0.376471, 0.701961, 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.921569, 0.980392, 1, 1 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "r_key"
+[sub_resource type="Animation" id=5]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("ammo/key:scale")
@@ -35,8 +34,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "r_key_end"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ammo/key:scale")
 tracks/0/interp = 1
@@ -110,6 +108,7 @@ margin_right = 124.0
 margin_bottom = 43.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
+max_value = 150.0
 percent_visible = false
 
 [node name="slow_mo" type="Control" parent="."]
@@ -128,15 +127,15 @@ margin_left = 8.0
 margin_top = 15.0
 margin_right = 124.0
 margin_bottom = 43.0
-custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 6 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 max_value = 10.0
 value = 5.0
 percent_visible = false
 
 [node name="anims" type="AnimationPlayer" parent="."]
-anims/r_key = SubResource( 3 )
-anims/r_key_end = SubResource( 4 )
+anims/r_key = SubResource( 5 )
+anims/r_key_end = SubResource( 6 )
 
 [node name="weapon" type="AnimatedSprite" parent="."]
 position = Vector2( 150, 164 )

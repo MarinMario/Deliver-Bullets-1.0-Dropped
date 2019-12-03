@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/regular_mob/regular_mob.gd" type="Script" id=1]
 [ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://assets/textures/enemies/regular_mob/move2_regular_mob.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/enemies/regular_mob/move3_regular_mob.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/enemies/regular_mob/move4_regular_mob.png" type="Texture" id=7]
-[ext_resource path="res://scenes/regular_mob/mob_hand.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/textures/enemies/melee_mob/idle_melee_mob.png" type="Texture" id=8]
+[ext_resource path="res://scenes/regular_mob/mob_hand.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 59 )
@@ -28,6 +29,21 @@ animations = [ {
 "loop": false,
 "name": "die",
 "speed": 0.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "melee_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "melee_die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "melee_idle",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=3]
@@ -35,6 +51,31 @@ radius = 431.01
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("body_container/mob_hand:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body_container:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "die"
@@ -88,9 +129,9 @@ tracks/3/keys = {
 }
 
 [node name="regular_mob" type="KinematicBody2D" groups=[
+"enemy",
 "living",
 "interacting",
-"enemy",
 ]]
 collision_layer = 5
 collision_mask = 5
@@ -109,12 +150,13 @@ position = Vector2( 0, 57 )
 [node name="body_sprite" type="AnimatedSprite" parent="body_container"]
 position = Vector2( 4, -6 )
 frames = SubResource( 2 )
-animation = "die"
+animation = "melee_die"
 
-[node name="mob_hand" parent="body_container" instance=ExtResource( 8 )]
+[node name="mob_hand" parent="body_container" instance=ExtResource( 9 )]
 position = Vector2( -10, -13 )
 
 [node name="line_of_sight" type="Area2D" parent="."]
+visible = false
 position = Vector2( 11, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="line_of_sight"]
@@ -125,3 +167,4 @@ anims/attack = SubResource( 4 )
 anims/die = SubResource( 5 )
 [connection signal="body_entered" from="line_of_sight" to="." method="_on_line_of_sight_body_entered"]
 [connection signal="body_exited" from="line_of_sight" to="." method="_on_line_of_sight_body_exited"]
+[connection signal="animation_finished" from="anims" to="." method="_on_anims_animation_finished"]

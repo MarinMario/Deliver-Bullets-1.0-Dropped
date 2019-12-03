@@ -4,6 +4,7 @@ var weapon_state: String
 var fire_timer := 0.0
 var target: Vector2
 var fire_rate: float
+var can_shoot := true
 
 func _process(delta):
 	weapon_state = get_parent().get_parent().weapon_state
@@ -13,11 +14,11 @@ func _process(delta):
 	elif weapon_state == "machine_gun":
 		fire_rate = 0.25
 	else:
-		fire_rate = 0
+		can_shoot = false
 	
 	if get_parent().get_parent().can_shoot:
 		fire_timer += delta
-		if fire_timer > fire_rate:
+		if fire_timer > fire_rate and can_shoot:
 			target = get_parent().get_parent().target
 			fire_timer = 0
 			#yield(get_tree().create_timer(0.5), "timeout")

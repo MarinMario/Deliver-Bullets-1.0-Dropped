@@ -8,22 +8,29 @@ var alive := true
 var motion: Vector2
 var speed := 200
 var target: Vector2
-var change_pos_timer := 2.0
+var change_pos_timer := 0.0
+var change_pos_value := 1.0
 var do_command_timer := 0.0
 var can_shoot := false
+var attack_timer := 0
+var distance_from_player := 200
+var mob_type := "melee"
 
 var anim := "idle"
 var health := 100
 
 func _physics_process(delta):
 	change_pos_timer += delta
-	if change_pos_timer > 1 and follow_player:
+	
+	change_pos_value = 1 if mob_type == "ranged" else 0.5
+	
+	if change_pos_timer > change_pos_value and follow_player:
 		target = global.player_pos
 		change_pos_timer = 0
 	if follow_player and health > 0:
 		motion = (target - position).normalized()
 		$body_container/mob_hand.look_at(target)
-		if position.distance_to(target) > 200:
+		if position.distance_to(target) > distance_from_player:
 			speed = 300
 		else:
 			speed = 0.0001
@@ -34,6 +41,12 @@ func _physics_process(delta):
 		if do_command_timer > 2 and health > 0:
 			do_command()
 			do_command_timer = 0
+	
+	#if mob_type == "melee":
+	for collision in get_slide_count():
+			var body = get_slide_collision(collision).collider
+			if body.name == "player" and mob_type == "melee":
+				$anims.play("attack")
 	
 	if health <= 0: speed = 0
 	move_and_slide(motion * speed)
@@ -46,17 +59,38 @@ func _physics_process(delta):
 	else:
 		$body_container.scale.x = 1
 	
-	if health <= 0:
-		anim = "die"
-	elif speed < 1:
-		anim = "idle"
-	else:
-		anim = "walk"
-
+	choose_mob()
 
 func do_command():
 	randomize()
 	motion = Vector2(rand_range(-1,1), rand_range(-1,1))
+
+func choose_mob():
+	var die_anim
+	var idle_anim
+	var walk_anim
+	if weapon_state == "bat":
+		die_anim = "melee_die"
+		idle_anim = "melee_idle"
+		walk_anim = "melee_walk"
+		distance_from_player = 10
+		mob_type = "melee"
+	else:
+		die_anim = "die"
+		idle_anim = "idle"
+		walk_anim = "walk"
+		distance_from_player = 200
+		mob_type = "ranged"
+	
+	if health <= 0:
+		anim = die_anim
+	elif speed < 1:
+		anim = idle_anim
+	else:
+		anim = walk_anim
+	
+	
+
 func _on_line_of_sight_body_entered(body):
 	if body.name == "player":
 		follow_player = true
@@ -66,9 +100,6 @@ func _on_line_of_sight_body_exited(body):
 	if body.name == "player":
 		follow_player = false
 		can_shoot = false
-
-func attack():
-	$anims.play("attack")
 
 func take_damage():
 	health -= 1
@@ -98,3 +129,8 @@ func die():
 	$anims.play("die")
 	self.z_index = -2
 	weapon_state = "nothing"
+
+func _on_anims_animation_finished(anim_name):
+	if anim_name == "attack":
+		for i in 10:
+			global.player.take_damage()

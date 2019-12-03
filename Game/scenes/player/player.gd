@@ -11,7 +11,8 @@ var dash = 1000
 var dash_timer := 0.0
 
 func _ready():
-	global.player_health = 100
+	global.player_health = 150
+	global.player = self
 	#speed = 300
 	#$CollisionShape2D.disabled = false
 

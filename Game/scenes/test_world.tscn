@@ -30,7 +30,6 @@ tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0,
 tile_data = PoolIntArray( -1, 3, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 4, 0, -65523, 3, 0, -65522, 2, 0, -65521, 2, 0, -65520, 2, 0, -65519, 4, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 5, 5, 0, 13, 5, 0, 14, 5, 0, 15, 5, 0, 16, 5, 0, 17, 5, 0, 131071, 5, 0, 65536, 5, 0, 65537, 5, 0, 65538, 5, 0, 65539, 5, 0, 65540, 5, 0, 65541, 5, 0, 65542, 3, 0, 65543, 2, 0, 65544, 2, 0, 65545, 4, 0, 65549, 5, 0, 65550, 5, 0, 65551, 5, 0, 65552, 5, 0, 65553, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 5, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0, 131085, 5, 0, 131086, 5, 0, 131087, 5, 0, 196609, 5, 0, 196610, 5, 0, 196611, 5, 0, 196612, 5, 0, 196613, 5, 0, 196614, 5, 0, 196615, 5, 0, 196616, 5, 0, 196617, 5, 0, 196618, 3, 0, 196619, 2, 0, 196620, 4, 0, 196621, 5, 0, 196622, 5, 0, 196623, 5, 0, 262145, 5, 0, 262146, 5, 0, 262147, 5, 0, 262148, 5, 0, 262149, 5, 0, 262150, 5, 0, 262151, 5, 0, 262152, 5, 0, 262153, 5, 0, 262154, 5, 0, 262155, 5, 0, 262156, 5, 0, 262157, 5, 0, 262158, 5, 0, 262159, 5, 0, 327685, 5, 0, 327692, 5, 0, 327693, 5, 0, 327694, 5, 0, 327695, 5, 0, 393228, 5, 0, 393229, 5, 0, 393230, 5, 0, 393231, 5, 0, 393232, 3, 0, 458764, 5, 0, 458765, 5, 0, 458766, 5, 0, 458767, 5, 0, 458768, 5, 0 )
 
 [node name="enemies" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 2
 
 [node name="regular_mob" parent="enemies" instance=ExtResource( 5 )]
@@ -38,7 +37,8 @@ position = Vector2( 2055.26, 13.9286 )
 weapon_state = "machine_gun"
 
 [node name="regular_mob2" parent="enemies" instance=ExtResource( 5 )]
-position = Vector2( 2062.66, 654.244 )
+position = Vector2( 474.103, 169.749 )
+weapon_state = "bat"
 
 [node name="regular_mob3" parent="enemies" instance=ExtResource( 5 )]
 position = Vector2( 1799.87, 388.995 )
@@ -80,12 +80,11 @@ position = Vector2( 2023.78, -64.4211 )
 position = Vector2( 2120.16, 829.621 )
 
 [node name="barrels" type="Node2D" parent="light"]
-editor/display_folded = true
 
 [node name="barrel" parent="light/barrels" instance=ExtResource( 8 )]
 position = Vector2( 1121.02, 328.31 )
 
 [node name="barrel2" parent="light/barrels" instance=ExtResource( 8 )]
-position = Vector2( 1955.68, 541.156 )
+position = Vector2( 1956.68, 543.156 )
 
 [node name="crosshair" parent="." instance=ExtResource( 9 )]
