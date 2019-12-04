@@ -21,15 +21,15 @@ animations = [ {
 "name": "idle",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "die",
 "speed": 0.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk",
+"speed": 20.0
 } ]
 
 [sub_resource type="Animation" id=3]
@@ -57,7 +57,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.2 ), Vector2( 1, 0.4 ), Vector2( 1, 0.4 ), Vector2( 0.5, 0.2 ) ]
+"values": [ Vector2( 0.5, 0.2 ), Vector2( 1, 0.2 ), Vector2( 1, 0.2 ), Vector2( 0.5, 0.2 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("body_container:position")
@@ -121,7 +121,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.2 ), Vector2( 1, 0.4 ), Vector2( 1, 0.4 ), Vector2( 0.5, 0.2 ) ]
+"values": [ Vector2( 0.5, 0.2 ), Vector2( 1, 0.2 ), Vector2( 1, 0.2 ), Vector2( 0.5, 0.2 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("body_container:position")
@@ -195,10 +195,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.2 ), Vector2( 1.133, 0.4 ) ]
+"values": [ Vector2( 0.5, 0.2 ), Vector2( 1.133, 0.2 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("shadow:position")
+tracks/3/path = NodePath("body_container:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -207,7 +207,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.500003, 63 ), Vector2( 0.5, 10 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 40 ) ]
 }
 
 [node name="player" type="KinematicBody2D" groups=[

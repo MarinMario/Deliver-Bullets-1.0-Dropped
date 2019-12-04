@@ -67,6 +67,7 @@ func _physics_process(delta):
 			dash_anim = "dash2"
 
 func take_damage():
+	spawn_blood(3)
 	global.player_health -= 1
 		#p_a += 10
 	$Camera2D.camera_shake(5, 1)
@@ -82,3 +83,10 @@ func die():
 	self.z_index = 0
 	
 	#get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+
+
+func spawn_blood(amount):
+	for i in amount:
+		var blood_splatter = global.BLOOD_SPLATTER.instance()
+		blood_splatter.spawn_blood(global_position, 1000, 100, 0.4)
+		get_parent().add_child(blood_splatter)

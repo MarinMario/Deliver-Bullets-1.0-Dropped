@@ -1,39 +1,100 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/mobs/pistol_enemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/enemies/melee_mob/idle_melee_mob.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move2_regular_mob.png" type="Texture" id=3]
+[ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/enemies/regular_mob/idle_regular_mob.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move1_regular_mob.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move2_regular_mob.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move3_regular_mob.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move4_regular_mob.png" type="Texture" id=7]
+[ext_resource path="res://scenes/regular_mob/mob_hand.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14, 55 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
 "name": "idle",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "die",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "move",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "die",
-"speed": 5.0
+"speed": 20.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 23, 72 )
+[sub_resource type="Animation" id=3]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 40 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.00721002, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.2 ), Vector2( 1, 0.2 ) ]
+}
 
-[node name="pistol_enemy" type="KinematicBody2D"]
+[node name="pistol_enemy" type="KinematicBody2D" groups=[
+"living",
+]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource( 1 )
 init_speed = 300
-change_pos_time = 0.5
+weapon_state = "machine_gun"
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="shadow" parent="." instance=ExtResource( 2 )]
+position = Vector2( -2, 61 )
+scale = Vector2( 0.52537, 0.2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4, 1 )
+shape = SubResource( 2 )
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite" parent="body"]
 frames = SubResource( 1 )
 animation = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3, 1 )
-shape = SubResource( 2 )
+[node name="mob_hand" parent="body" instance=ExtResource( 8 )]
+position = Vector2( -11, -10 )
+
+[node name="anims" type="AnimationPlayer" parent="."]
+anims/die = SubResource( 3 )

@@ -222,7 +222,6 @@ margin_bottom = 87.2363
 custom_icons/grabber_highlight = ExtResource( 9 )
 custom_icons/grabber = ExtResource( 9 )
 custom_styles/slider = SubResource( 3 )
-ticks_on_borders = false
 
 [node name="Sound" type="Control" parent="options_tab"]
 margin_left = 131.392
