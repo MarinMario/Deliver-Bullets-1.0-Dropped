@@ -1,7 +1,6 @@
 extends Node2D
 
-var player
-var player_pos: Vector2
+var player: Node2D
 var camera: Node2D
 
 var player_weapons := ["nothing"]

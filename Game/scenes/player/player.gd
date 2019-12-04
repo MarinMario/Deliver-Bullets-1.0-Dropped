@@ -17,7 +17,6 @@ func _ready():
 	#$CollisionShape2D.disabled = false
 
 func _physics_process(delta):
-	global.player_pos = self.global_position
 	dash_timer += delta
 	
 	#movement

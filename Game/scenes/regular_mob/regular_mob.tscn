@@ -3,11 +3,11 @@
 [ext_resource path="res://scenes/regular_mob/regular_mob.gd" type="Script" id=1]
 [ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/enemies/regular_mob/idle_regular_mob.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move1_regular_mob.png" type="Texture" id=4]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move2_regular_mob.png" type="Texture" id=5]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move3_regular_mob.png" type="Texture" id=6]
-[ext_resource path="res://assets/textures/enemies/regular_mob/move4_regular_mob.png" type="Texture" id=7]
-[ext_resource path="res://assets/textures/enemies/melee_mob/idle_melee_mob.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/enemies/melee_mob/idle_melee_mob.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move1_regular_mob.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move2_regular_mob.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move3_regular_mob.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/enemies/regular_mob/move4_regular_mob.png" type="Texture" id=8]
 [ext_resource path="res://scenes/regular_mob/mob_hand.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -20,29 +20,29 @@ animations = [ {
 "name": "idle",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "die",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "melee_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "melee_die",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "melee_idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "melee_die",
 "speed": 5.0
 } ]
 
@@ -130,8 +130,8 @@ tracks/3/keys = {
 
 [node name="regular_mob" type="KinematicBody2D" groups=[
 "enemy",
-"living",
 "interacting",
+"living",
 ]]
 collision_layer = 5
 collision_mask = 5

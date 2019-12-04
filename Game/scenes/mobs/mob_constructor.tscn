@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/mobs/mob_constructor.gd" type="Script" id=1]
+
+[node name="mob_constructor" type="KinematicBody2D"]
+script = ExtResource( 1 )
