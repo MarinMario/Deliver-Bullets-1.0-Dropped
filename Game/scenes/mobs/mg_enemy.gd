@@ -1,7 +1,7 @@
 extends MobConstructor
 
 func _ready():
-	weapon_state = "pistol"
+	weapon_state = "machine_gun"
 	health = 100
 	detect_target_range = 500
 	

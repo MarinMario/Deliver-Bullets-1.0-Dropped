@@ -17,6 +17,8 @@ func _ready():
 	var explosion = global.EXPLOSION.instance()
 	explosion.global_position = self.global_position
 	get_parent().add_child(explosion)
+	
+	sound.get_node("shoot").play()
 
 func _process(delta):
 	motion = direction * speed
@@ -34,6 +36,7 @@ func _process(delta):
 		for i in get_slide_count():
 			var collision = get_slide_collision(i).collider
 			if collision.is_in_group("living"):
+				sound.get_node("hit").play()
 				for i in damage:
 					collision.take_damage()
 					despawn_effect(Vector2(1,1), Color(1,1,1))

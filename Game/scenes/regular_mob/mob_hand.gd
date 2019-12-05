@@ -26,6 +26,8 @@ func _process(delta):
 			fire_timer = 0
 			#yield(get_tree().create_timer(0.5), "timeout")
 			shoot()
+	else:
+		self.rotation_degrees = 0
 	
 	if mob.health <= 0:
 		if not weapon_dropped:
@@ -42,15 +44,10 @@ func shoot():
 
 func drop_weapon():
 	var weapon_item = global.WEAPON_ITEM.instance()
-	var random_pos = rand_range(30,70)
 	weapon_item.weapon_state = weapon_state
 	mob.weapon_state = "nothing"
-	weapon_item.global_position = self.global_position + Vector2(random_pos, random_pos)
+	weapon_item.global_position = self.global_position + Vector2(0,100)
 	mob.get_parent().add_child(weapon_item)
-
-
-
-
 
 
 

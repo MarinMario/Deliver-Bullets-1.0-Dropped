@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/test_world.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/other/barrel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/world/crosshair.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/mobs/pistol_enemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/mobs/mg_enemy.tscn" type="PackedScene" id=10]
 
 [node name="test_world" type="Node2D"]
 script = ExtResource( 1 )
@@ -65,6 +66,7 @@ position = Vector2( 2023.78, -64.4211 )
 position = Vector2( 2120.16, 829.621 )
 
 [node name="barrels" type="Node2D" parent="light"]
+editor/display_folded = true
 
 [node name="barrel" parent="light/barrels" instance=ExtResource( 7 )]
 position = Vector2( 900.291, 389.596 )
@@ -77,5 +79,5 @@ position = Vector2( 1966.63, 925.524 )
 [node name="pistol_enemy" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2154.92, 82.394 )
 
-[node name="pistol_enemy2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1959.78, 750 )
+[node name="mg_enemy" parent="." instance=ExtResource( 10 )]
+position = Vector2( 0, 82.1953 )

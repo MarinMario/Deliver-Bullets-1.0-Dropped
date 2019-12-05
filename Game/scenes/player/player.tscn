@@ -242,7 +242,6 @@ tracks/1/keys = {
 ]]
 collision_layer = 3
 script = ExtResource( 1 )
-init_speed = 700
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

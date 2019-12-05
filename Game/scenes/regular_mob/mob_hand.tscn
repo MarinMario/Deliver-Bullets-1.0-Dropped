@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/regular_mob/mob_hand.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/enemies/regular_mob/hand_regular_mob.png" type="Texture" id=2]
 [ext_resource path="res://scenes/other/gun.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "melee_attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0298601, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0, 0.0 ]
+}
 
 [node name="mob_hand" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,3 +33,6 @@ animation = "nothing"
 
 [node name="shoot_point" type="Position2D" parent="."]
 position = Vector2( 55, 0 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/melee_attack = SubResource( 1 )

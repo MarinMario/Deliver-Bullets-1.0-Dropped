@@ -20,6 +20,7 @@ export var change_pos_time := 1.0
 
 var follow_target := false
 var can_shoot := false
+var allow_melee_attack := false
 
 var rand_motion: Vector2
 var choose_rand_motion_timer := 0.0
@@ -55,6 +56,7 @@ func _process(delta):
 		move_and_slide(motion)
 	
 		check_shoot()
+		#check_melee_attack()
 	
 	
 func when_follow_target():
@@ -84,6 +86,13 @@ func check_shoot():
 	else:
 		can_shoot = false
 
+func check_melee_attack():
+	if mob_type == "melee" and follow_target:
+		if self.global_position.distance_to(target_pos) <= max_distance_to_target + 10:
+			allow_melee_attack = true
+	else:
+		allow_melee_attack = false
+
 func take_damage():
 	health -= 1
 	follow_target = true if health > 0 and target.health > 0 else false
@@ -106,5 +115,3 @@ func spawn_blood(amount):
 		var blood_splatter = global.BLOOD_SPLATTER.instance()
 		blood_splatter.spawn_blood(global_position, 1000, 100, 0.4)
 		get_parent().add_child(blood_splatter)
-		
-		

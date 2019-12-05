@@ -27,6 +27,7 @@ func pick_up():
 	else:
 		add_weapon()
 	
+	sound.get_node("pick_up").play()
 	self.queue_free()
 
 func add_ammo():

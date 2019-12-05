@@ -30,11 +30,14 @@ func take_damage():
 		global.camera.camera_shake(15, 3)
 		
 		give_damage()
+		
+		sound.get_node("explosion").play()
 
 func give_damage():
 	for anyone in bodies_inside_area:
 		for i in 100:
 			anyone.take_damage()
+			sound.get_node("hit").play()
 
 func _on_damage_area_body_entered(body):
 	if body.is_in_group("living"):
