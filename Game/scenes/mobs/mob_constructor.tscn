@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/mobs/mob_constructor.gd" type="Script" id=1]
 
 [node name="mob_constructor" type="KinematicBody2D" groups=[
-"living",
 "interacting",
+"living",
 ]]
 script = ExtResource( 1 )

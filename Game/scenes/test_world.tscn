@@ -45,7 +45,6 @@ position = Vector2( 509.719, 523.85 )
 weapon_state = "machine_gun"
 
 [node name="light" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="light_caster" parent="light" instance=ExtResource( 6 )]
 position = Vector2( -9.27269, -63.6345 )
@@ -66,14 +65,17 @@ position = Vector2( 2023.78, -64.4211 )
 position = Vector2( 2120.16, 829.621 )
 
 [node name="barrels" type="Node2D" parent="light"]
-editor/display_folded = true
 
 [node name="barrel" parent="light/barrels" instance=ExtResource( 7 )]
-position = Vector2( 904.717, 389.596 )
+position = Vector2( 900.291, 389.596 )
 
 [node name="barrel2" parent="light/barrels" instance=ExtResource( 7 )]
-position = Vector2( 1960.29, 874.82 )
+position = Vector2( 1966.63, 925.524 )
 
 [node name="crosshair" parent="." instance=ExtResource( 8 )]
 
 [node name="pistol_enemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2154.92, 82.394 )
+
+[node name="pistol_enemy2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1959.78, 750 )

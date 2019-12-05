@@ -21,7 +21,7 @@ func _process(delta):
 	if mob.can_shoot:
 		fire_timer += delta
 		if fire_timer > fire_rate and can_shoot:
-			target = mob.target
+			target = mob.target_pos
 			self.look_at(target)
 			fire_timer = 0
 			#yield(get_tree().create_timer(0.5), "timeout")

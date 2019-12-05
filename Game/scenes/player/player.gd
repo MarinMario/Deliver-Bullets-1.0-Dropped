@@ -1,12 +1,14 @@
 extends KinematicBody2D
 
 var motion := Vector2(0,0)
+export var init_speed := 300
 var speed := 300
 var anim := "idle"
 var weapon_state: String
 var slow_mo_timer := 5.0
 var dash_anim := "dash1"
 var dash = 1000
+var health := 150
 #var p_a: int = 0
 var dash_timer := 0.0
 
@@ -21,6 +23,7 @@ func _ready():
 
 func _physics_process(delta):
 	dash_timer += delta
+	health = global.player_health
 	
 	#movement
 	motion = Vector2(0,0)
@@ -40,7 +43,7 @@ func _physics_process(delta):
 			if anim == "dash1" or "dash2":
 				speed = 600
 		else:
-			speed = 300
+			speed = init_speed
 		
 	if Input.is_action_pressed("slow_time") and slow_mo_timer > 0:
 		Engine.set_time_scale(0.1)
