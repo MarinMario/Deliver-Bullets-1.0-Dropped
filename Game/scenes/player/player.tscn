@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/player/player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=2]
@@ -210,6 +210,33 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 40 ) ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/path = NodePath("trans/transtition_block:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1500, -800 ), Vector2( 1500, -800 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("trans/transtition_block:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="player" type="KinematicBody2D" groups=[
 "living",
 ]]
@@ -241,7 +268,19 @@ script = ExtResource( 9 )
 
 [node name="player_stats" parent="." instance=ExtResource( 10 )]
 
+[node name="trans" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="transtition_block" type="ColorRect" parent="trans"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 1500.0
+margin_top = -800.0
+margin_right = 6081.0
+margin_bottom = 3166.0
+color = Color( 0.0705882, 0.0901961, 0.101961, 1 )
+
 [node name="anims" type="AnimationPlayer" parent="."]
 anims/dash1 = SubResource( 3 )
 anims/dash2 = SubResource( 4 )
 anims/die = SubResource( 5 )
+anims/transition = SubResource( 6 )

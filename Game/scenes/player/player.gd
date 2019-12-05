@@ -11,6 +11,9 @@ var dash = 1000
 var dash_timer := 0.0
 
 func _ready():
+	$trans/transtition_block.modulate.a = 1
+	$trans/transtition_block.rect_position.x = -1500
+	$anims.play("transition")
 	global.player_health = 150
 	global.player = self
 	#speed = 300

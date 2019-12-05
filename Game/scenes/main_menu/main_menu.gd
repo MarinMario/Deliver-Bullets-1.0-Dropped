@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_play_pressed():
-	get_tree().change_scene("res://scenes/test_world.tscn")
+		$anim.play("despawn")
 
 
 func _on_exit_pressed():
@@ -23,3 +23,8 @@ func _on_options_pressed():
 	else:
 		$anim.play("option_menu")
 		option_on = true
+
+
+func _on_anim_animation_finished(anim_name):
+	if anim_name == "despawn":
+		get_tree().change_scene("res://scenes/main_menu/levels.tscn")
