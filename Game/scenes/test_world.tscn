@@ -80,4 +80,4 @@ position = Vector2( 1966.63, 925.524 )
 position = Vector2( 2154.92, 82.394 )
 
 [node name="mg_enemy" parent="." instance=ExtResource( 10 )]
-position = Vector2( 0, 82.1953 )
+position = Vector2( 1715.82, 866.474 )

@@ -9,7 +9,8 @@ var motion := Vector2(0,0)
 
 export var init_speed := 200
 var speed := 200
-export var detect_target_range := 500
+export var init_detect_target_range := 500
+var detect_target_range := 500
 export var health := 100
 export var mob_type := "ranged"
 export var weapon_state := "pistol"
@@ -54,8 +55,6 @@ func _process(delta):
 			motion = rand_motion * speed
 	
 		move_and_slide(motion)
-	
-		check_shoot()
 		#check_melee_attack()
 	
 	
@@ -64,7 +63,10 @@ func when_follow_target():
 		follow_target = true
 	else:
 		follow_target = false
-
+	
+	can_shoot = true if follow_target else false
+	
+	
 func node_to_anim(node_to_anim: Node2D):
 	var anim: String
 	if health > 0:
@@ -80,26 +82,16 @@ func node_to_flip(node_to_flip: Node2D):
 	elif motion.x < 0:
 		node_to_flip.scale.x = -1
 
-func check_shoot():
-	if mob_type == "ranged" and follow_target:
-		can_shoot = true
-	else:
-		can_shoot = false
-
-func check_melee_attack():
-	if mob_type == "melee" and follow_target:
-		if self.global_position.distance_to(target_pos) <= max_distance_to_target + 10:
-			allow_melee_attack = true
-	else:
-		allow_melee_attack = false
 
 func take_damage():
 	health -= 1
-	follow_target = true if health > 0 and target.health > 0 else false
-	can_shoot = true if health > 0 and target.health > 0 else false
 	spawn_blood(3)
 	if health <= 0:
 		die()
+	
+	detect_target_range = 10000
+	yield(get_tree().create_timer(5.0), "timeout")
+	detect_target_range = init_detect_target_range
 
 func die():
 	spawn_blood(20)
