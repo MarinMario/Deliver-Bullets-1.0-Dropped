@@ -12,22 +12,26 @@ var health := 150
 #var p_a: int = 0
 var dash_timer := 0.0
 
+var ammo: int
+var pistol_ammo := 0
+var mg_ammo := 0
+var weapons := ["nothing"]
+
 func _ready():
 	$trans/transtition_block.modulate.a = 1
 	$trans/transtition_block.rect_position.x = -1500
 	$anims.play("transition")
-	global.player_health = 150
+	health = 150
 	global.player = self
 	#speed = 300
 	#$CollisionShape2D.disabled = false
 
 func _physics_process(delta):
 	dash_timer += delta
-	health = global.player_health
 	
 	#movement
 	motion = Vector2(0,0)
-	if global.player_health > 0 and not Input.is_action_pressed("move_camera"):
+	if health > 0 and not Input.is_action_pressed("move_camera"):
 		if Input.is_action_pressed("ui_right"):
 			motion.x += 1
 		if Input.is_action_pressed("ui_left"):
@@ -74,11 +78,11 @@ func _physics_process(delta):
 
 func take_damage():
 	spawn_blood(3)
-	global.player_health -= 1
+	health -= 1
 		#p_a += 10
 	$Camera2D.camera_shake(5, 1)
 	
-	if global.player_health <= 0:
+	if health <= 0:
 		die()
 	#print("particle amount: " + str(p_a))
 

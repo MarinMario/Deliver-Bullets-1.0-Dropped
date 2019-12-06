@@ -22,7 +22,7 @@ func _process(delta):
 		$key.visible = false
 	
 func pick_up():
-	if weapon_state in global.player_weapons:
+	if weapon_state in global.player.weapons:
 		add_ammo()
 	else:
 		add_weapon()
@@ -32,12 +32,12 @@ func pick_up():
 
 func add_ammo():
 	if weapon_state == "pistol":
-		global.player_pistol_ammo += 30
+		global.player.pistol_ammo += 30
 	elif weapon_state == "machine_gun":
-		global.player_mg_ammo += 30
+		global.player.mg_ammo += 60
 
 func add_weapon():
-	global.player_weapons.push_back(weapon_state)
+	global.player.weapons.push_back(weapon_state)
 	add_ammo()
 
 func _on_weapon_item_body_entered(body):

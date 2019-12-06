@@ -10,28 +10,18 @@ func _process(delta):
 	
 	
 	#set text for ammo bar
-	if player.in_use_ammo < 10:
-		in_use_ammo = "0" + str(player.in_use_ammo)
-	else:
-		in_use_ammo = str(player.in_use_ammo)
 	
-	if player.ammo < 10:
-		ammo = "0" + str(player.ammo)
-	else:
-		ammo = str(player.ammo)
-	
-	$ammo/in_use_ammo.text = str(in_use_ammo)
-	$ammo/remaining_ammo.text = str(ammo)
+	$ammo/in_use_ammo.text = str(player.ammo)
 	
 	$anims.play("r_key")
-	if player.in_use_ammo == 0 and player.ammo > 0:
-		$ammo/key.visible = true
-	else:
+	if player.ammo > 0:
 		$ammo/key.visible = false
+	else:
+		$ammo/key.visible = true
 	
 	
 	#set health bar
-	$health/health_bar.value = global.player_health
+	$health/health_bar.value = global.player.health
 	
 	#set in use gun
 	$weapon.play(player.weapon_state)

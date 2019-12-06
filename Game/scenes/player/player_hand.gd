@@ -4,19 +4,13 @@ var target := Vector2(0,0)
 var weapon_state := "hand"
 var fire_timer := 0.0
 var allow_fire := false
-var allow_reload := false
-var is_reloading := false
 
 var ammo: int
-var in_use_ammo: int
-
-var in_use_pistol_ammo: int
-var in_use_mg_ammo:int
 
 var num := 0
 
 func _process(delta):
-	if global.player_health > 0:
+	if global.player.health > 0:
 		target = get_global_mouse_position()
 		self.look_at(target)
 	#$gun.look_at(mouse)
@@ -28,13 +22,6 @@ func _process(delta):
 		shoot()
 	if Input.is_action_just_pressed("change_weapon"):
 		change_weapon()
-	if Input.is_action_just_pressed("reload") and allow_reload:
-		is_reloading = true
-		sound.get_node("reload").play()
-		print("reloading...")
-		yield(get_tree().create_timer(1.0), "timeout")
-		reload()
-		is_reloading = false
 
 func shoot():
 	var bullet = global.BULLET.instance()
@@ -44,57 +31,32 @@ func shoot():
 	get_parent().get_parent().get_parent().add_child(bullet)
 	
 	if weapon_state == "pistol":
-		in_use_pistol_ammo -= 1
+		global.player.pistol_ammo -= 1
 	elif weapon_state == "machine_gun":
-		in_use_mg_ammo -= 1
+		global.player.mg_ammo -= 1
 	
 	fire_timer = 0
 
-func reload():
-	var max_ammo = 30
-	var reload_ammo = max_ammo - in_use_ammo
-	if ammo >= reload_ammo and in_use_ammo < max_ammo:
-		if weapon_state == "pistol":
-			in_use_pistol_ammo += reload_ammo
-			global.player_pistol_ammo -= reload_ammo
-		elif weapon_state == "machine_gun":
-			in_use_mg_ammo += reload_ammo
-			global.player_mg_ammo -= reload_ammo
-		else:
-			in_use_ammo = 0
 
 func change_weapon():
 	num += 1
-	if num > global.player_weapons.size() - 1:
+	if num > global.player.weapons.size() - 1:
 		num = 0
 	if num < 0:
-		num = global.player_weapons.size() - 1
-	weapon_state = global.player_weapons[num]
+		num = global.player.weapons.size() - 1
+	weapon_state = global.player.weapons[num]
 
 func ammo_manager():
 	if weapon_state == "pistol":
-		ammo = global.player_pistol_ammo
-		in_use_ammo = in_use_pistol_ammo
+		ammo = global.player.pistol_ammo
 	elif weapon_state == "machine_gun":
-		ammo = global.player_mg_ammo
-		in_use_ammo = in_use_mg_ammo
+		ammo = global.player.mg_ammo
 	else:
 		ammo = 0
-		in_use_ammo = 0
 	
-	if global.player_health > 0:
-		if in_use_ammo == 0 or is_reloading:
-			allow_fire = false
-		else:
-			allow_fire = true
 	
-		if is_reloading or ammo == 0:
-			allow_reload = false
-		else:
-			allow_reload = true
-	else:
-		allow_reload = false
-		allow_fire = false
+	allow_fire = true if ammo > 0 and global.player.health > 0 else false
+	global.player.ammo = ammo
 
 
 
