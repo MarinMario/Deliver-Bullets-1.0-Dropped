@@ -88,6 +88,8 @@ func take_damage():
 
 func die():
 	speed = 0
+	pistol_ammo = 0
+	mg_ammo = 0
 	$CollisionShape2D.disabled = true
 	$anims.play("die")
 	self.z_index = 0

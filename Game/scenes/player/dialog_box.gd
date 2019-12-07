@@ -9,12 +9,16 @@ func _ready():
 	pass
 
 func _process(delta):
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("action_key"):
 		if line_number == lines.size() - 1:
 			$anims.play("despawn")
 		else:
 			line_number += 1
 			$anims.play("pop")
+	if Input.is_action_just_pressed("ui_cancel"):
+		$anims.play("despawn")
+	
+	
 	current_text = lines[line_number]
 	$container/Label.text = current_text
 

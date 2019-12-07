@@ -136,6 +136,7 @@ __meta__ = {
 }
 
 [node name="line 1" type="Control" parent="container"]
+editor/display_folded = true
 margin_right = 850.0
 margin_bottom = 100.0
 __meta__ = {
@@ -147,14 +148,17 @@ __meta__ = {
 [node name="level_button2" parent="container/line 1" instance=ExtResource( 3 )]
 margin_left = 150.0
 margin_right = 250.0
+level = 2
 
 [node name="level_button3" parent="container/line 1" instance=ExtResource( 3 )]
 margin_left = 300.0
 margin_right = 400.0
+level = 3
 
 [node name="level_button4" parent="container/line 1" instance=ExtResource( 3 )]
 margin_left = 450.0
 margin_right = 550.0
+level = 4
 
 [node name="level_button5" parent="container/line 1" instance=ExtResource( 3 )]
 margin_left = 600.0

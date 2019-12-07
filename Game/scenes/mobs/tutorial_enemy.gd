@@ -12,6 +12,9 @@ func _process(delta):
 	
 	if health <= 0 and add_dialog:
 		var dialog = global.DIALOG_BOX.instance()
-		dialog.lines = PoolStringArray(["You killed your first enemy!"])
+		dialog.lines = PoolStringArray([
+			"Hehe, fine. Now you can advance to the next room",
+			"Be careful though! Things will get a lot harder"
+		])
 		add_child(dialog)
 		add_dialog = false

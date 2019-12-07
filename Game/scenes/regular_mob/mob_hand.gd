@@ -43,11 +43,12 @@ func shoot():
 
 
 func drop_weapon():
-	var weapon_item = global.WEAPON_ITEM.instance()
-	weapon_item.weapon_state = weapon_state
-	mob.weapon_state = "nothing"
-	weapon_item.global_position = self.global_position + Vector2(0,100)
-	mob.get_parent().add_child(weapon_item)
+	if weapon_state != "nothing":
+		var weapon_item = global.WEAPON_ITEM.instance()
+		weapon_item.weapon_state = weapon_state
+		mob.weapon_state = "nothing"
+		weapon_item.global_position = self.global_position + Vector2(0,100)
+		mob.get_parent().add_child(weapon_item)
 
 
 

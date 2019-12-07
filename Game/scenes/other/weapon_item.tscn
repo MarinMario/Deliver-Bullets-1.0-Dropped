@@ -26,6 +26,7 @@ tracks/0/keys = {
 
 [node name="weapon_item" type="Area2D"]
 position = Vector2( -63, 31 )
+z_index = 5
 z_as_relative = false
 script = ExtResource( 1 )
 
