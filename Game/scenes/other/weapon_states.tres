@@ -5,18 +5,23 @@
 
 [resource]
 animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "hand",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": false,
 "name": "pistol",
 "speed": 0.0
 }, {
-"frames": [  ],
-"loop": false,
-"name": "nothing",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "machine_gun",
+"speed": 0.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "nothing",
 "speed": 0.0
 } ]

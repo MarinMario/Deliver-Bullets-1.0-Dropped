@@ -21,13 +21,20 @@ func _ready():
 	$trans/transtition_block.modulate.a = 1
 	$trans/transtition_block.rect_position.x = -1500
 	$anims.play("transition")
-	health = 150
+	health = saveload.player_health
+	pistol_ammo = saveload.pistol_ammo
+	mg_ammo = saveload.mg_ammo
+	weapons = saveload.weapons
 	global.player = self
 	#speed = 300
 	#$CollisionShape2D.disabled = false
 
 func _physics_process(delta):
 	dash_timer += delta
+	saveload.pistol_ammo = pistol_ammo
+	saveload.mg_ammo = mg_ammo
+	saveload.weapons = weapons
+	saveload.player_health = health if health > 0 else 100
 	
 	#movement
 	motion = Vector2(0,0)

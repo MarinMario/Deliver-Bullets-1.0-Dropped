@@ -5,6 +5,7 @@ var option_on := false
 func _ready():
 	$menu.rect_position.y = 1000
 	$options_tab.rect_position.x = 2000
+	$CenterContainer.rect_position.x = -1800
 	$anim.play("ready_menu")
 
 

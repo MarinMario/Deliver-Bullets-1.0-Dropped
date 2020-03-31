@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/test_world.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=2]
@@ -7,9 +7,8 @@
 [ext_resource path="res://scenes/other/weapon_item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/other/light_caster.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/other/barrel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/world/crosshair.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/mobs/pistol_enemy.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/mobs/mg_enemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/mobs/pistol_enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/mobs/mg_enemy.tscn" type="PackedScene" id=9]
 
 [node name="test_world" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,7 +19,6 @@ __meta__ = {
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 636.456, 344.994 )
 z_index = 3
-z_as_relative = false
 
 [node name="roof" parent="." instance=ExtResource( 3 )]
 z_index = 4095
@@ -74,10 +72,8 @@ position = Vector2( 900.291, 389.596 )
 [node name="barrel2" parent="light/barrels" instance=ExtResource( 7 )]
 position = Vector2( 1966.63, 925.524 )
 
-[node name="crosshair" parent="." instance=ExtResource( 8 )]
-
-[node name="pistol_enemy" parent="." instance=ExtResource( 9 )]
+[node name="pistol_enemy" parent="." instance=ExtResource( 8 )]
 position = Vector2( 2154.92, 82.394 )
 
-[node name="mg_enemy" parent="." instance=ExtResource( 10 )]
+[node name="mg_enemy" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1715.82, 866.474 )

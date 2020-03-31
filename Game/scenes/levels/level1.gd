@@ -23,7 +23,7 @@ func _process(delta):
 			dialog2_spawned = true
 			spawn_dialog([
 				"Good. Now it's time to kill the enemy!",
-			 	"Press left click to shoot"
+				"Press left click to shoot"
 			])
 
 

@@ -144,7 +144,6 @@ __meta__ = {
 }
 
 [node name="play" type="TextureButton" parent="menu"]
-editor/display_folded = true
 margin_right = 200.0
 margin_bottom = 100.0
 texture_normal = ExtResource( 3 )
@@ -168,7 +167,6 @@ align = 1
 valign = 1
 
 [node name="options" type="TextureButton" parent="menu"]
-editor/display_folded = true
 margin_top = 100.0
 margin_right = 200.0
 margin_bottom = 200.0
@@ -193,7 +191,6 @@ align = 1
 valign = 1
 
 [node name="exit" type="TextureButton" parent="menu"]
-editor/display_folded = true
 margin_top = 200.0
 margin_right = 200.0
 margin_bottom = 300.0
@@ -223,7 +220,6 @@ anims/option_menu = SubResource( 2 )
 anims/ready_menu = SubResource( 3 )
 
 [node name="options_tab" type="Control" parent="."]
-editor/display_folded = true
 margin_left = 600.0
 margin_top = 250.0
 margin_right = 1171.0
@@ -272,6 +268,7 @@ margin_bottom = 87.2363
 custom_icons/grabber_highlight = ExtResource( 9 )
 custom_icons/grabber = ExtResource( 9 )
 custom_styles/slider = SubResource( 4 )
+ticks_on_borders = true
 
 [node name="Sound" type="Control" parent="options_tab"]
 margin_left = 131.392
