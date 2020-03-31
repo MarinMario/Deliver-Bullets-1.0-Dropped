@@ -45,7 +45,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.980786 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1e-005, 1e-005 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
 [node name="player_stats" type="CanvasLayer"]
@@ -57,7 +57,8 @@ margin_top = 100.0
 margin_right = 254.0
 margin_bottom = 143.0
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="bg" type="Sprite" parent="ammo"]

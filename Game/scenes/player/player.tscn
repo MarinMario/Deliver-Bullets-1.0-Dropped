@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/player/player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/other/shadow.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/player/Camera2D.gd" type="Script" id=9]
 [ext_resource path="res://scenes/player/player_stats.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/world/crosshair.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/main_menu/in_game_menu.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 57 )
@@ -268,6 +269,7 @@ smoothing_enabled = true
 script = ExtResource( 9 )
 
 [node name="player_stats" parent="." instance=ExtResource( 10 )]
+layer = 2
 
 [node name="trans" type="CanvasLayer" parent="."]
 layer = 2
@@ -287,3 +289,5 @@ anims/die = SubResource( 5 )
 anims/transition = SubResource( 6 )
 
 [node name="crosshair" parent="." instance=ExtResource( 11 )]
+
+[node name="in_game_menu" parent="." instance=ExtResource( 12 )]

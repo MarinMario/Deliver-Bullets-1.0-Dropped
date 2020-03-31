@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main_menu/main_menu_font.tres" type="DynamicFont" id=2]
@@ -6,9 +6,8 @@
 [ext_resource path="res://assets/other/pressed_button.png" type="Texture" id=4]
 [ext_resource path="res://assets/other/hover_button.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/in_use_font.tres" type="DynamicFont" id=6]
-[ext_resource path="res://assets/other/options_tab.png" type="Texture" id=7]
-[ext_resource path="res://assets/other/slider_slider.png" type="Texture" id=8]
-[ext_resource path="res://assets/other/slider_circle.png" type="Texture" id=9]
+[ext_resource path="res://scenes/main_menu/options_tab.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/world/crosshair.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "despawn"
@@ -115,8 +114,6 @@ tracks/1/keys = {
 "values": [ Vector2( 100, 1000 ), Vector2( 100, 300 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=4]
-
 [node name="main_menu" type="CanvasLayer"]
 script = ExtResource( 1 )
 
@@ -219,92 +216,9 @@ anims/despawn = SubResource( 1 )
 anims/option_menu = SubResource( 2 )
 anims/ready_menu = SubResource( 3 )
 
-[node name="options_tab" type="Control" parent="."]
-margin_left = 600.0
-margin_top = 250.0
-margin_right = 1171.0
-margin_bottom = 635.0
-__meta__ = {
-"_edit_group_": true
-}
+[node name="options_tab" parent="." instance=ExtResource( 7 )]
 
-[node name="bg" type="Sprite" parent="options_tab"]
-position = Vector2( 238.008, 195.895 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
-offset = Vector2( 15.664, -1.9649 )
-
-[node name="music" type="Control" parent="options_tab"]
-margin_left = 133.197
-margin_top = 96.5877
-margin_right = 466.197
-margin_bottom = 149.588
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Label" type="Label" parent="options_tab/music"]
-margin_left = -138.121
-margin_top = -23.4701
-margin_right = 61.8791
-margin_bottom = 67.5299
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.14902, 0.2, 0.215686, 1 )
-text = "Music"
-align = 1
-valign = 1
-
-[node name="slider_slider" type="Sprite" parent="options_tab/music"]
-show_behind_parent = true
-position = Vector2( 170.747, 23.446 )
-scale = Vector2( 5, 5 )
-texture = ExtResource( 8 )
-
-[node name="slider" type="HSlider" parent="options_tab/music"]
-margin_left = 1.6889
-margin_top = -39.7637
-margin_right = 335.689
-margin_bottom = 87.2363
-custom_icons/grabber_highlight = ExtResource( 9 )
-custom_icons/grabber = ExtResource( 9 )
-custom_styles/slider = SubResource( 4 )
-ticks_on_borders = true
-
-[node name="Sound" type="Control" parent="options_tab"]
-margin_left = 131.392
-margin_top = 189.812
-margin_right = 464.392
-margin_bottom = 242.812
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Label" type="Label" parent="options_tab/Sound"]
-margin_left = -138.121
-margin_top = -23.4701
-margin_right = 61.8791
-margin_bottom = 67.5299
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.14902, 0.2, 0.215686, 1 )
-text = "Sounds"
-align = 1
-valign = 1
-
-[node name="slider_slider" type="Sprite" parent="options_tab/Sound"]
-show_behind_parent = true
-position = Vector2( 170.747, 23.446 )
-scale = Vector2( 5, 5 )
-texture = ExtResource( 8 )
-
-[node name="slider" type="HSlider" parent="options_tab/Sound"]
-margin_left = 1.6889
-margin_top = -39.7637
-margin_right = 335.689
-margin_bottom = 87.2363
-custom_icons/grabber_highlight = ExtResource( 9 )
-custom_icons/grabber = ExtResource( 9 )
-custom_styles/slider = SubResource( 4 )
-ticks_on_borders = true
+[node name="crosshair" parent="." instance=ExtResource( 8 )]
 [connection signal="pressed" from="menu/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="menu/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
