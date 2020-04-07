@@ -7,6 +7,8 @@ func _ready():
 	$options_tab.rect_position.x = 2000
 	$CenterContainer.rect_position.x = -1800
 	$anim.play("ready_menu")
+	get_tree().paused = false
+	global.curent_level = 0
 
 
 func _on_play_pressed():

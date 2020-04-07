@@ -10,17 +10,11 @@ onready var mob := get_parent().get_parent()
 
 func _process(delta):
 	weapon_state = mob.weapon_state
-	
-	if weapon_state == "pistol":
-		fire_rate = 1.0
-	elif weapon_state == "machine_gun":
-		fire_rate = 0.25
-	else:
-		can_shoot = false
+	fire_rate = mob.fire_rate
 	
 	if mob.can_shoot:
 		fire_timer += delta
-		if fire_timer > fire_rate and can_shoot:
+		if fire_timer > fire_rate:
 			target = mob.target_pos
 			self.look_at(target)
 			fire_timer = 0
@@ -35,11 +29,12 @@ func _process(delta):
 			weapon_dropped = true
 
 func shoot():
-	var bullet = global.MOB_BULLET.instance()
-	bullet.init_pos = $shoot_point.global_position
-	bullet.target = target
-	bullet.bullet_type = weapon_state
-	get_parent().get_parent().get_parent().add_child(bullet)
+	if weapon_state != "nothing":
+		var bullet = global.MOB_BULLET.instance()
+		bullet.init_pos = $shoot_point.global_position
+		bullet.target = target
+		bullet.bullet_type = weapon_state
+		get_parent().get_parent().get_parent().add_child(bullet)
 
 
 func drop_weapon():

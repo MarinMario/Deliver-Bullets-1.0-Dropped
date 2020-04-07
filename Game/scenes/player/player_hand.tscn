@@ -12,7 +12,6 @@ texture = ExtResource( 2 )
 offset = Vector2( 13, 1 )
 
 [node name="gun" parent="." instance=ExtResource( 3 )]
-animation = "hand"
 
 [node name="shoot_point" type="Position2D" parent="."]
 position = Vector2( 66, -4 )

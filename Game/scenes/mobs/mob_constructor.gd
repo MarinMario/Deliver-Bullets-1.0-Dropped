@@ -14,6 +14,7 @@ var detect_target_range := 500
 export var health := 100
 export var mob_type := "ranged"
 export var weapon_state := "pistol"
+export var fire_rate := 2
 
 var change_pos_timer := 0.0
 export var max_distance_to_target := 200
@@ -26,6 +27,10 @@ var allow_melee_attack := false
 var rand_motion: Vector2
 var choose_rand_motion_timer := 0.0
 export var rand_motion_time := 1.0
+
+func _ready():
+	global.enemies_in_scene += 1
+	print("enemies alive: " + str(global.enemies_in_scene))
 
 func _process(delta):
 	randomize()
@@ -99,7 +104,7 @@ func die():
 	follow_target = false
 	$CollisionShape2D.disabled = true
 	$anims.play("die")
-	pass
+	global.enemies_in_scene -= 1
 
 
 func spawn_blood(amount):

@@ -1,7 +1,7 @@
 extends Node2D
 
 var target := Vector2(0,0)
-var weapon_state := "hand"
+var weapon_state := "nothing"
 var fire_timer := 0.0
 var allow_fire := false
 

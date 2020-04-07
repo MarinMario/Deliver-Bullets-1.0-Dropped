@@ -5,6 +5,6 @@
 
 [node name="blood_splatter" type="Sprite"]
 modulate = Color( 0.564706, 0, 0, 1 )
-z_as_relative = false
+z_index = -1
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

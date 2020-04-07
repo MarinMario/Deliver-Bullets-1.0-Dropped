@@ -4,9 +4,9 @@ var init_pos: Vector2
 var target: Vector2
 var direction: Vector2
 var motion: Vector2
-var speed := 800
-var damage := 1
-var bullet_type: String
+var speed := 1000
+var damage := 10
+var bullet_type := "nothing"
 
 func _ready():
 	#init_pos = global.player_shoot_point
@@ -24,13 +24,6 @@ func _process(delta):
 	motion = direction * speed
 	move_and_slide(motion)
 	$bullet_sprite.play(bullet_type)
-	
-	if bullet_type == "machine_gun":
-		damage = 10
-		speed = 1500
-	elif bullet_type == "pistol":
-		damage = 20
-		speed = 1000
 	
 	if get_slide_count() > 0:
 		for i in get_slide_count():

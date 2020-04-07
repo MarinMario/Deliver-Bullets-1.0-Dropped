@@ -4,6 +4,7 @@ var dialog1_spawned := false
 var dialog2_spawned := false
 
 func _ready():
+	global.curent_level = 1
 	yield(get_tree().create_timer(1.0), "timeout")
 	spawn_dialog([
 				"You can use WASD to move",

@@ -15,8 +15,6 @@ func _process(delta):
 		else:
 			line_number += 1
 			$anims.play("pop")
-	if Input.is_action_just_pressed("ui_cancel"):
-		$anims.play("despawn")
 	
 	
 	current_text = lines[line_number]
