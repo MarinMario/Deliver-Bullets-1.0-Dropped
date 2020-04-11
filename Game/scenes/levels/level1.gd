@@ -1,4 +1,4 @@
-extends Node2D
+extends Level
 
 var dialog1_spawned := false
 var dialog2_spawned := false
@@ -12,7 +12,6 @@ func _ready():
 	
 
 func _process(delta):
-	
 	if "pistol" in global.player.weapons and not dialog1_spawned:
 		dialog1_spawned = true
 		spawn_dialog([

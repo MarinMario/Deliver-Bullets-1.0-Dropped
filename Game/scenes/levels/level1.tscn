@@ -22,6 +22,7 @@ position = Vector2( 372.203, 301.976 )
 
 [node name="tutorial_enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2028.39, 296.003 )
+weapon_state = "nothing"
 
 [node name="objects" type="Node2D" parent="."]
 

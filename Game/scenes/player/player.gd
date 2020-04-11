@@ -8,10 +8,10 @@ var weapon_state: String
 var slow_mo_timer := 5.0
 var dash_anim := "dash1"
 var dash = 1000
-var health := 150
 #var p_a: int = 0
 var dash_timer := 0.0
 
+onready var health := 150
 var ammo: int
 var pistol_ammo := 0
 var mg_ammo := 0
@@ -21,20 +21,12 @@ func _ready():
 	$trans/transtition_block.modulate.a = 1
 	$trans/transtition_block.rect_position.x = -1500
 	$anims.play("transition")
-	health = saveload.player_health
-	pistol_ammo = saveload.pistol_ammo
-	mg_ammo = saveload.mg_ammo
-	weapons = saveload.weapons
 	global.player = self
 	#speed = 300
 	#$CollisionShape2D.disabled = false
 
 func _physics_process(delta):
 	dash_timer += delta
-	saveload.pistol_ammo = pistol_ammo
-	saveload.mg_ammo = mg_ammo
-	saveload.weapons = weapons
-	saveload.player_health = health if health > 0 else 100
 	
 	#movement
 	motion = Vector2(0,0)

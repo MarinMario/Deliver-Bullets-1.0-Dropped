@@ -178,8 +178,13 @@ text = "Pause"
 [node name="anims" type="AnimationPlayer" parent="."]
 anims/menu = SubResource( 5 )
 anims/options = SubResource( 6 )
+
+[node name="end_screen_timer" type="Timer" parent="."]
+pause_mode = 2
+one_shot = true
 [connection signal="pressed" from="Container/Control/buttons/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="Container/Control/buttons/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Container/Control/buttons/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Container/Control/buttons/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Container/pause" to="." method="_on_pause_pressed"]
+[connection signal="timeout" from="end_screen_timer" to="." method="_on_end_screen_timer_timeout"]

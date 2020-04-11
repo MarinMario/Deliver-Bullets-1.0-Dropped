@@ -14,7 +14,7 @@ var detect_target_range := 500
 export var health := 100
 export var mob_type := "ranged"
 export var weapon_state := "pistol"
-export var fire_rate := 2
+export var fire_rate := 2.0
 
 var change_pos_timer := 0.0
 export var max_distance_to_target := 200
@@ -105,6 +105,7 @@ func die():
 	$CollisionShape2D.disabled = true
 	$anims.play("die")
 	global.enemies_in_scene -= 1
+	print("enemies alive: " + str(global.enemies_in_scene))
 
 
 func spawn_blood(amount):

@@ -15,4 +15,3 @@ const BULLET_DESPAWN_EFFECT = preload("res://scenes/other/bullet_despawn_effect.
 
 var enemies_in_scene = 0
 var curent_level = 0
-

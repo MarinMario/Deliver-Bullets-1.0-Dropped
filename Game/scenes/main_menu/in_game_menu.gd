@@ -13,11 +13,11 @@ func _ready():
 func _process(delta):
 	if get_parent().health <= 0:
 		title.text = "Eyyy! You screwed up..."
-		start_end_screen_timer()
-	elif global.enemies_in_scene <= 0:
+		$end_screen_timer.start()
+	elif global.enemies_in_scene <= 0: 
 		title.text = "Nice! You did it..."
 		$Container/Control/buttons/next.disabled = false
-		start_end_screen_timer()
+		$end_screen_timer.start()
 	elif options_show:
 		title.text = "Options"
 	else:
@@ -61,10 +61,6 @@ func _on_exit_pressed():
 	get_tree().paused = false
 	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
 
-onready var end_screen_timer = 0.0
-onready var end_screen_timer_one_shot = false
-func start_end_screen_timer():
-	end_screen_timer += get_process_delta_time()
-	if end_screen_timer > 1 and !end_screen_timer_one_shot:
-		end_screen_timer_one_shot = true
-		pause()
+func _on_end_screen_timer_timeout():
+	print("LEVEL STOP")
+	#pause()
